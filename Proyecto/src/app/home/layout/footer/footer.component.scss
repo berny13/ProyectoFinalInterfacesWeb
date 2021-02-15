@@ -1,0 +1,56 @@
+@import "src/@fuse/scss/fuse";
+@import "src/app/general/partials/zinkee-colors";
+
+.buttons-container {
+display: flex;
+
+@include media-breakpoint('xs') {
+margin-top: 15px;
+}
+
+.buttons {
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 12px 12px 12px 0px;
+
+@include media-breakpoint('xs') {
+padding: 5px;
+}
+
+.button-accept {
+background-color: $teal;
+border-color: $teal;
+color: $white;
+}
+
+.button-delete {
+background-color: white;
+color: #c41a1a;
+border: solid 1px #c41a1a;
+margin: 0 auto;
+}
+
+.button-close {
+background-color: $white;
+color: $black;
+border: solid 1px $black;
+}
+
+}
+}
+
+.delete-container {
+padding: 15px 20px;
+
+h2 {
+font-size: 14px;
+text-transform: uppercase;
+font-weight: 600;
+text-align: center;
+}
+
+.mat-stroked-button {
+margin: 0 10px 0 10px;
+}
+}
