@@ -1,31 +1,50 @@
-<div class="container">
-  <div class="row">
-  <div class="example-container">
-    <h2>To do</h2>
-
-    <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo" [cdkDropListConnectedTo]="[doneList]"
-      class="example-list" (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<div class="items-align-center">
+  <div class="bg"></div>
+  <section class="ui">
+    <div class="lists">
+      <div class="list">
+        <div class="example-container">
+          <div class="row">
+            <header class="col">To Do</header>
+            <mat-icon class="col-2">more_horiz</mat-icon>
+          </div>
+          <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo" [cdkDropListConnectedTo]="[doneList]"
+            class="example-list" (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+          </div>
+          <footer><button class="btn btn-basic">Add new card...</button></footer>
+        </div>
+      </div>
+      <div class="list">
+        <div class="example-container">
+          <div class="row">
+            <header class="col">In Progress</header>
+            <mat-icon class="col-2">more_horiz</mat-icon>
+          </div>
+          <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" [cdkDropListConnectedTo]="[todoList]"
+            class="example-list" (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
+          </div>
+          <footer><button class="btn btn-basic">Add new card...</button></footer>
+        </div>
+      </div>
+      <div class="list">
+        <div class="example-container">
+          <div class="row">
+            <header class="col">Done</header>
+            <mat-icon class="col-2" href="#">more_horiz</mat-icon>
+          </div>
+          <mat-divider></mat-divider>
+          <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="inProgress" [cdkDropListConnectedTo]="[todoList]"
+            class="example-list" (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let item of inProgress" cdkDrag>{{item}}</div>
+          </div>
+          <footer><button class="btn btn-basic">Add new card...</button></footer>
+        </div>
+      </div>
     </div>
-  </div>
-
-  <div class="example-container">
-    <h2>Done</h2>
-
-    <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" [cdkDropListConnectedTo]="[todoList]"
-      class="example-list" (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
-    </div>
-  </div>
-
-  <div class="example-container">
-    <h2>inProgress</h2>
-    <mat-divider></mat-divider>
-
-    <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="inProgress" [cdkDropListConnectedTo]="[todoList]"
-      class="example-list" (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let item of inProgress" cdkDrag>{{item}}</div>
-    </div>
-  </div>
-</div>
+  </section>
 </div>

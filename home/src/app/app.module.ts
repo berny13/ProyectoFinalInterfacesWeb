@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 import {MatDividerModule} from '@angular/material/divider';
 
+
 @NgModule({
   declarations: [
     AppComponent,
