@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+import {Observable} from 'rxjs';
+import {startWith, map} from 'rxjs/operators';
+import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 
 
 @Component({
@@ -42,8 +45,40 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
+ 
+
+  control = new FormControl();
+  streets: string[] = ['tablero', 'cards', 'usuarios', 'home'];
+  filteredStreets!: Observable<string[]>;
+
+  ngOnInit() {
+    this.filteredStreets = this.control.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value))
+    );
   }
 
+  private _filter(value: string): string[] {
+    const filterValue = this._normalizeValue(value);
+    return this.streets.filter(street => this._normalizeValue(street).includes(filterValue));
+  }
+
+  private _normalizeValue(value: string): string {
+    return value.toLowerCase().replace(/\s/g, '');
+  }
+  
+
+  constructor(breakpointObserver: BreakpointObserver) {
+    breakpointObserver.observe([
+      Breakpoints.HandsetLandscape,
+      Breakpoints.HandsetPortrait
+    ]).subscribe(result => {
+      if (result.matches) {
+        
+      }
+    });
+    
+
+  }
 
 }
