@@ -13,6 +13,8 @@ import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 })
 export class HomeComponent implements OnInit {
 
+  
+
   todo = [
     'Get to work',
     'Pick up groceries',
@@ -27,6 +29,7 @@ export class HomeComponent implements OnInit {
     'Check e-mail',
     'Walk dog'
   ];
+
   inProgress = [
     'arranca proyecto',
     'estudiar mas',
@@ -34,7 +37,7 @@ export class HomeComponent implements OnInit {
 
   ];
 
-  drop(event: CdkDragDrop<string[]>) {
+  drop(event: CdkDragDrop<string[], string[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
@@ -51,11 +54,15 @@ export class HomeComponent implements OnInit {
   streets: string[] = ['tablero', 'cards', 'usuarios', 'home'];
   filteredStreets!: Observable<string[]>;
 
+  clear(){
+    this.streets = [''];
+  }
   ngOnInit() {
     this.filteredStreets = this.control.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value))
     );
+    
   }
 
   private _filter(value: string): string[] {
@@ -67,7 +74,10 @@ export class HomeComponent implements OnInit {
     return value.toLowerCase().replace(/\s/g, '');
   }
   
-
+ /* agregar(){
+    this.card = this.card;
+    
+  } */
   constructor(breakpointObserver: BreakpointObserver) {
     breakpointObserver.observe([
       Breakpoints.HandsetLandscape,
@@ -80,5 +90,6 @@ export class HomeComponent implements OnInit {
     
 
   }
+  panelOpenState = false;
 
 }

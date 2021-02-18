@@ -1,24 +1,35 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 <mat-toolbar>
   <div class="dashboard-header">
     <nav class="navbar navbar-expand-lg bg-white fixed-top">
-      <a class="navbar-brand" href="#">TRELLO-BERNY</a>
-      <button class="btn btn-link" class="navbar-togtrols" type="button" data-toggle="collapse" aria-expanded="false"
-        aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon">
-        </span>
-        <mat-icon>home</mat-icon>
-      </button>
+      <div class="btn-toolbar pull-right">
+        <button class="btn btn-light btn-sm mr-1" type="button" data-toggle="collapse" 
+          data-target=".dual-collapse2">
+          <mat-icon>toc</mat-icon>
+        </button>
+        <button class="btn btn-light btn-sm mr-1" type="button" data-toggle="collapse" 
+          data-target=".dual-collapse2">
+          <mat-icon>home</mat-icon>
+        </button>
+      </div>
+      <a class="align-items-end" href="#">TRELLO-BERNY</a>
       <div class="collapse navbar-collapse " id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto navbar-right-top">
           <li class="nav-item">
             <div id="custom-search" class="top-search-bar">
-              <input class="form-control" type="text" placeholder="Search..">
+              <input class="form-control" type="text" placeholder="Search.." [formControl]="control"
+                [matAutocomplete]="auto">
             </div>
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let street of filteredStreets | async" [value]="street">
+                {{street}}
+              </mat-option>
+            </mat-autocomplete>
           </li>
-          <li class="nav-item dropdown notification">
+          <li class="btn-toolbar pull-right">
             <a class="nav-link nav-icons" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">
               <i class="fas fa-fw fa-bell">
@@ -56,7 +67,8 @@
                             src="https://img.icons8.com/color/100/000000/name.png" alt=""
                             class="user-avatar-md rounded-circle"></div>
                         <div class="notification-list-user-block"><span class="notification-list-user-name">Kioh
-                            Samso</span> is watching your main repository <div class="notification-date">2 min ago</div>
+                            Samso</span> is watching your main repository <div class="notification-date">2 min ago
+                          </div>
                         </div>
                       </div>
                     </a> </div>
@@ -67,20 +79,20 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item dropdown connection">
+          <li class="btn-toolbar pull-right">
             <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
               aria-expanded="false">
               <i class="fas fa-fw fa-th">
 
               </i>
-              <mat-icon>toc</mat-icon>
+              <mat-icon>add</mat-icon>
             </a>
             <ul class="dropdown-menu dropdown-menu-right connection-dropdown">
               <li class="connection-list">
                 <div class="row">
                   <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                    <a href="https://github.com/berny13" class="connection-item"><img src="https://img.icons8.com/nolan/100/000000/github.png"
-                        alt="">
+                    <a href="https://github.com/berny13" class="connection-item"><img
+                        src="https://img.icons8.com/nolan/100/000000/github.png" alt="">
                       <span>Github</span>
                     </a>
                   </div>
@@ -144,7 +156,7 @@
   <div class="bg"></div>
   <section class="ui">
     <div class="lists">
-      <div class="list">
+      <div class="list pt-3">
         <div class="example-container">
           <div class="row">
             <header class="col">To Do</header>
@@ -152,14 +164,28 @@
               <mat-icon class="col-2">more_horiz</mat-icon>
             </button>
           </div>
-          <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo" [cdkDropListConnectedTo]="[doneList]"
+          <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo" [cdkDropListConnectedTo]="[inProgressList]"
             class="example-list" (cdkDropListDropped)="drop($event)">
             <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
           </div>
-          <footer><button class="btn btn-basic">Add new card...</button></footer>
+          <footer>
+            <div>
+              <mat-accordion>
+                <mat-expansion-panel hideToggle>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      <button class="btn btn-basic">Add new card...</button>
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <input type="text" placeholder="Escribir...">
+                  <button class="btn btn-success btn-sm mr-1">Añadir</button>
+                </mat-expansion-panel>
+              </mat-accordion>
+            </div>
+          </footer>
         </div>
       </div>
-      <div class="list">
+      <div class="list pt-3">
         <div class="example-container">
           <div class="row">
             <header class="col">In Progress</header>
@@ -167,14 +193,29 @@
               <mat-icon class="col-2">more_horiz</mat-icon>
             </button>
           </div>
-          <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" [cdkDropListConnectedTo]="[todoList]"
-            class="example-list" (cdkDropListDropped)="drop($event)">
-            <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
+          <mat-divider></mat-divider>
+          <div cdkDropList #inProgressList="cdkDropList" [cdkDropListData]="inProgress"
+            [cdkDropListConnectedTo]="[doneList]" class="example-list" (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let item of inProgress" cdkDrag>{{item}}</div>
           </div>
-          <footer><button class="btn btn-basic">Add new card...</button></footer>
+          <footer>
+            <div>
+              <mat-accordion>
+                <mat-expansion-panel hideToggle>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      <button class="btn btn-basic">Add new card...</button>
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <input type="text" placeholder="Escribir...">
+                  <button class="btn btn-success btn-sm mr-1">Añadir</button>
+                </mat-expansion-panel>
+              </mat-accordion>
+            </div>
+          </footer>
         </div>
       </div>
-      <div class="list">
+      <div class="list pt-3">
         <div class="example-container">
           <div class="row">
             <header class="col">Done</header>
@@ -182,12 +223,25 @@
               <mat-icon class="col-2">more_horiz</mat-icon>
             </button>
           </div>
-          <mat-divider></mat-divider>
-          <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="inProgress" [cdkDropListConnectedTo]="[todoList]"
+          <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" [cdkDropListConnectedTo]="[inProgressList]"
             class="example-list" (cdkDropListDropped)="drop($event)">
-            <div class="example-box" *ngFor="let item of inProgress" cdkDrag>{{item}}</div>
+            <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
           </div>
-          <footer><button class="btn btn-basic">Add new card...</button></footer>
+          <footer>
+            <div>
+              <mat-accordion>
+                <mat-expansion-panel hideToggle>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      <button class="btn btn-basic">Add new card...</button>
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <input type="text" placeholder="Escribir...">
+                  <button class="btn btn-success btn-sm mr-1" >Añadir</button>
+                </mat-expansion-panel>
+              </mat-accordion>
+            </div>
+          </footer>
         </div>
       </div>
     </div>

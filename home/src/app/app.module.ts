@@ -16,12 +16,15 @@ import { HomeComponent } from './home/home.component';
 import {MatDividerModule} from '@angular/material/divider';
 import {LayoutModule} from '@angular/cdk/layout';
 import { FlexLayoutModule } from '@angular/flex-layout';
-
+import { PrincipalComponent } from './principal/principal.component';
+import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    PrincipalComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FormsModule, 
     ReactiveFormsModule,
     LayoutModule,
-    FlexLayoutModule 
+    FlexLayoutModule,
+    MatBottomSheetModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]
