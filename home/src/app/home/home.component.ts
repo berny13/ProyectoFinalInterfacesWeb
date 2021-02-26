@@ -6,6 +6,7 @@ import { startWith, map } from 'rxjs/operators';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { MatBottomSheet, MatBottomSheetRef, MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MAT_BOTTOM_SHEET_DATA } from '@angular/material/bottom-sheet';
+import { inProgress } from './inProgress.model';
 
 
 
@@ -22,8 +23,8 @@ export class HomeComponent implements OnInit {
   public _replyForm1!: NgForm;
   public _replyForm2!: NgForm;
   public _replyInput2!: ElementRef;
-  public tasks!: [];
   private _replyFormSuscription!: Subscription;
+  public tarjetainProgress!:string;
 
   @ViewChild('replyForm', { static: false })
   set replyForm(content: NgForm) {
@@ -71,12 +72,13 @@ export class HomeComponent implements OnInit {
     'Walk dog'
   ];
 
-  inProgress = [
-    'arranca proyecto',
-    'estudiar mas',
-    'hacer nada'
+  addinprogress: inProgress[] = [];
 
-  ];
+  tarjetainprogressadd(){
+    let inprogresso = new inProgress(this.tarjetainProgress);
+    this.addinprogress.push(inprogresso);
+    this.limpiar()
+  }
 
   drop(event: CdkDragDrop<string[], string[]>) {
     if (event.previousContainer === event.container) {
@@ -115,10 +117,9 @@ export class HomeComponent implements OnInit {
     return value.toLowerCase().replace(/\s/g, '');
   }
 
-   /*agregarCard1(){
-     this.card = this.card;
-     
-   } */
+limpiar(): void{
+ this.tarjetainProgress= '';
+}
   constructor(breakpointObserver: BreakpointObserver) {
     breakpointObserver.observe([
       Breakpoints.HandsetLandscape,
@@ -128,8 +129,6 @@ export class HomeComponent implements OnInit {
 
       }
     });
-
-    this.tasks = [];
   }
   
   panelOpenState = false;
@@ -151,7 +150,17 @@ export class HomeComponent implements OnInit {
   }
 
   reply(): void{
+    if (!this._replyForm.form.value.message || (this._replyForm.form.value.message === '')) {
+      
+    } return;
+  }
+  reply1(): void{
     if (!this._replyForm1.form.value.message || (this._replyForm1.form.value.message === '')) {
+      
+    } return;
+  }
+  reply2(): void{
+    if (!this._replyForm2.form.value.message || (this._replyForm2.form.value.message === '')) {
       
     } return;
   }

@@ -195,23 +195,24 @@
 
                               <div class="reply-form" fxFlex="0 0 auto" fxLayout="row" fxLayoutAlign="center center">
 
-                                <form #replyForm="ngForm" (ngSubmit)="reply()" fxFlex fxLayout="row" fxLayoutAlign="start center">
-                                 
+                                <form #replyForm="ngForm" (ngSubmit)="reply()" fxFlex fxLayout="row"
+                                  fxLayoutAlign="start center">
+
                                   <mat-form-field class="message-text" fxflex floatLabel="never" appearance="standard">
                                     <mat-icon [matMenuTriggerFor]="menu">insert_emoticon</mat-icon>
                                     <mat-menu #menu="matMenu">
-                                      
+
                                       <div class="emoji-container">
                                         <emoji-mart (emojiClick)="addEmoji($event)" (click)="noClick($event)">
                                         </emoji-mart>
                                       </div>
-                                   
+
                                     </mat-menu>
                                     <div class="textarea-chat-wrapper">
-                                      <textarea matInput #replyInput ngModel name="message" 
-                                        placeholder="Escribir..." [rows]="1" [matTextareaAutosize]="true">
+                                      <textarea matInput #replyInput ngModel name="message" placeholder="Escribir..."
+                                        [rows]="1" [matTextareaAutosize]="true">
                                     </textarea>
-                                    </div>                               
+                                    </div>
                                   </mat-form-field>
                                 </form>
                               </div>
@@ -233,9 +234,10 @@
                         </button>
                       </div>
                       <mat-divider></mat-divider>
-                      <div cdkDropList #inProgressList="cdkDropList" [cdkDropListData]="inProgress"
-                        [cdkDropListConnectedTo]="[doneList]" class="example-list" (cdkDropListDropped)="drop($event)">
-                        <div class="example-box" *ngFor="let item of inProgress" cdkDrag>{{item}}</div>
+                      <div cdkDropList #inProgressList="cdkDropList" [cdkDropListData]="addinprogress"
+                        [cdkDropListConnectedTo]="[doneList]" class="example-list">
+                        <div class="example-box" *ngFor="let item of addinprogress" cdkDrag>{{item.tarjetainProgress}}
+                        </div>
                       </div>
                       <footer>
                         <div>
@@ -249,28 +251,30 @@
 
                               <div class="reply-form" fxFlex="0 0 auto" fxLayout="row" fxLayoutAlign="center center">
 
-                                <form #replyForm2="ngForm" (ngSubmit)="reply()" fxFlex fxLayout="row" fxLayoutAlign="start center">
-                                 
+                                <form #replyForm2="ngForm" (ngSubmit)="reply2()" fxFlex fxLayout="row"
+                                  fxLayoutAlign="start center">
+
                                   <mat-form-field class="message-text" fxflex floatLabel="never" appearance="standard">
-                                    <mat-icon [matMenuTriggerFor]="menu">insert_emoticon</mat-icon>
-                                    <mat-menu #menu="matMenu">
-                                      
+                                    <mat-icon [matMenuTriggerFor]="menu2">insert_emoticon</mat-icon>
+                                    <mat-menu #menu2="matMenu">
+
                                       <div class="emoji-container">
                                         <emoji-mart (emojiClick)="addEmoji2($event)" (click)="noClick($event)">
                                         </emoji-mart>
                                       </div>
-                                   
+
                                     </mat-menu>
                                     <div class="textarea-chat-wrapper">
-                                      <textarea matInput #replyInput2 ngModel name="message" 
-                                        placeholder="Escribir..." [rows]="1" [matTextareaAutosize]="true">
+                                      <textarea matInput #replyInput2 ngModel name="message" placeholder="Escribir..."
+                                        [rows]="1" [matTextareaAutosize]="true">
                                     </textarea>
-                                    </div>                               
+                                    </div>
                                   </mat-form-field>
                                 </form>
                               </div>
                               <br>
-                              <button class="" class="btn btn-success btn-block my-auto py-revert ml-3 ">Añadir</button>
+                              <button class="btn btn-success btn-block my-auto py-revert ml-3"
+                                (click)="tarjetainprogressadd()">Añadir</button>
                             </mat-expansion-panel>
                           </mat-accordion>
                         </div>
@@ -289,7 +293,7 @@
                       <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
                         [cdkDropListConnectedTo]="[inProgressList]" class="example-list"
                         (cdkDropListDropped)="drop($event)">
-                        <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
+                        <div class="example-box" *ngFor="let item of addinprogress" cdkDrag>{{item}}</div>
                       </div>
                       <footer>
                         <div>
@@ -304,23 +308,24 @@
 
                               <div class="reply-form" fxFlex="0 0 auto" fxLayout="row" fxLayoutAlign="center center">
 
-                                <form #replyForm1="ngForm" (ngSubmit)="reply()" fxFlex fxLayout="row" fxLayoutAlign="start center">
-                                 
+                                <form #replyForm1="ngForm" (ngSubmit)="reply1()" fxFlex fxLayout="row"
+                                  fxLayoutAlign="start center">
+
                                   <mat-form-field class="message-text" fxflex floatLabel="never" appearance="standard">
-                                    <mat-icon [matMenuTriggerFor]="menu">insert_emoticon</mat-icon>
-                                    <mat-menu #menu="matMenu">
-                                      
+                                    <mat-icon [matMenuTriggerFor]="menu1">insert_emoticon</mat-icon>
+                                    <mat-menu #menu1="matMenu">
+
                                       <div class="emoji-container">
                                         <emoji-mart (emojiClick)="addEmoji1($event)" (click)="noClick($event)">
                                         </emoji-mart>
                                       </div>
-                                   
+
                                     </mat-menu>
                                     <div class="textarea-chat-wrapper">
-                                      <textarea matInput #replyInput1 ngModel name="message" 
-                                        placeholder="Escribir..." [rows]="1" [matTextareaAutosize]="true">
+                                      <textarea matInput #replyInput1 ngModel name="message" placeholder="Escribir..."
+                                        [rows]="1" [matTextareaAutosize]="true">
                                     </textarea>
-                                    </div>                               
+                                    </div>
                                   </mat-form-field>
                                 </form>
                               </div>
