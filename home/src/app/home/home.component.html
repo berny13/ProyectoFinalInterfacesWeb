@@ -5,17 +5,15 @@
 <mat-toolbar>
   <div class="dashboard-header">
     <nav class="navbar navbar-expand-lg bg-white fixed-top">
-      <div class="btn-toolbar pull-right">
-        <button class="btn btn-light btn-sm mr-1" type="button" data-toggle="collapse" 
-          data-target=".dual-collapse2">
+      <div class="btn-toolbar">
+        <button class="btn btn-light btn-sm mr-3" type="button" data-toggle="collapse" data-target=".dual-collapse2">
           <mat-icon>toc</mat-icon>
         </button>
-        <button class="btn btn-light btn-sm mr-1" type="button" data-toggle="collapse" 
-          data-target=".dual-collapse2">
+        <button class="btn btn-light btn-sm mr-4" type="button" data-toggle="collapse" data-target=".dual-collapse2">
           <mat-icon>home</mat-icon>
         </button>
       </div>
-      <a class="align-items-end" href="#">TRELLO-BERNY</a>
+      <a class="align-items-center" href="#">TRELLO-BERNY</a>
       <div class="collapse navbar-collapse " id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto navbar-right-top">
           <li class="nav-item">
@@ -30,121 +28,131 @@
             </mat-autocomplete>
           </li>
           <li class="btn-toolbar pull-right">
-            <a class="nav-link nav-icons" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              <i class="fas fa-fw fa-bell">
-              </i>
-              <span class="indicator">
-              </span>
-              <mat-icon>notification_important</mat-icon>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-right notification-dropdown">
-              <li>
-                <div class="notification-title"> Notification</div>
-                <div class="notification-list">
-                  <div class="list-group"> <a href="#" class="list-group-item list-group-item-action active">
-                      <div class="notification-info">
-                        <div class="notification-list-user-img"><img
-                            src="https://img.icons8.com/office/100/000000/administrator-female.png" alt=""
-                            class="user-avatar-md rounded-circle"></div>
-                        <div class="notification-list-user-block"><span class="notification-list-user-name">Jeremy
-                            Hukonah</span>accepted your invitation to join the team. <div class="notification-date">2
-                            min ago</div>
-                        </div>
-                      </div>
-                    </a> <a href="#" class="list-group-item list-group-item-action">
-                      <div class="notification-info">
-                        <div class="notification-list-user-img"><img
-                            src="https://img.icons8.com/color/48/000000/administrator-female.png" alt=""
-                            class="user-avatar-md rounded-circle"></div>
-                        <div class="notification-list-user-block"><span class="notification-list-user-name">John
-                            Sammy</span>updated the email address <div class="notification-date">2 days ago</div>
-                        </div>
-                      </div>
-                    </a> <a href="#" class="list-group-item list-group-item-action">
-                      <div class="notification-info">
-                        <div class="notification-list-user-img"><img
-                            src="https://img.icons8.com/color/100/000000/name.png" alt=""
-                            class="user-avatar-md rounded-circle"></div>
-                        <div class="notification-list-user-block"><span class="notification-list-user-name">Kioh
-                            Samso</span> is watching your main repository <div class="notification-date">2 min ago
+            <div class="btn-toolbar pull-right">
+              <a class="nav-link nav-icons" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <button class="btn btn-light btn-sm mr-2">
+                  <mat-icon>notification_important</mat-icon>
+                </button>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-right notification-dropdown">
+                <li>
+                  <div class="notification-title"> Notification</div>
+                  <div class="notification-list">
+                    <div class="list-group"> <a href="#" class="list-group-item list-group-item-action active">
+                        <div class="notification-info">
+                          <div class="notification-list-user-img"><img
+                              src="https://img.icons8.com/office/100/000000/administrator-female.png" alt=""
+                              class="user-avatar-md rounded-circle"></div>
+                          <div class="notification-list-user-block"><span class="notification-list-user-name">Jeremy
+                              Hukonah</span>accepted your invitation to join the team. <div class="notification-date">2
+                              min ago</div>
                           </div>
                         </div>
-                      </div>
-                    </a> </div>
-                </div>
-              </li>
-              <li>
-                <div class="list-footer"> <a href="#">View all notifications</a></div>
-              </li>
-            </ul>
+                      </a> <a href="#" class="list-group-item list-group-item-action">
+                        <div class="notification-info">
+                          <div class="notification-list-user-img"><img
+                              src="https://img.icons8.com/color/48/000000/administrator-female.png" alt=""
+                              class="user-avatar-md rounded-circle"></div>
+                          <div class="notification-list-user-block"><span class="notification-list-user-name">John
+                              Sammy</span>updated the email address <div class="notification-date">2 days ago</div>
+                          </div>
+                        </div>
+                      </a> <a href="#" class="list-group-item list-group-item-action">
+                        <div class="notification-info">
+                          <div class="notification-list-user-img"><img
+                              src="https://img.icons8.com/color/100/000000/name.png" alt=""
+                              class="user-avatar-md rounded-circle"></div>
+                          <div class="notification-list-user-block"><span class="notification-list-user-name">Kioh
+                              Samso</span> is watching your main repository <div class="notification-date">2 min ago
+                            </div>
+                          </div>
+                        </div>
+                      </a> </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="list-footer"> <a href="#">View all notifications</a></div>
+                </li>
+              </ul>
+            </div>
           </li>
           <li class="btn-toolbar pull-right">
-            <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="false">
-              <i class="fas fa-fw fa-th">
-
-              </i>
-              <mat-icon>add</mat-icon>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-right connection-dropdown">
-              <li class="connection-list">
-                <div class="row">
-                  <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                    <a href="https://github.com/berny13" class="connection-item"><img
-                        src="https://img.icons8.com/nolan/100/000000/github.png" alt="">
-                      <span>Github</span>
-                    </a>
+            <div class="btn-toolbar pull-right">
+              <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                <button class="btn btn-light btn-sm mr-1">
+                  <mat-icon>add</mat-icon>
+                </button>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-right connection-dropdown">
+                <li class="connection-list">
+                  <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+                      <a href="https://github.com/berny13" class="connection-item"><img
+                          src="https://img.icons8.com/nolan/100/000000/github.png" alt="">
+                        <span>Github</span>
+                      </a>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+                      <a href="#" class="connection-item">
+                        <img src="https://img.icons8.com/color/100/000000/dribbble.png" alt="">
+                        <span>Dribbble</span>
+                      </a>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+                      <a href="#" class="connection-item">
+                        <img src="https://img.icons8.com/color/100/000000/dropbox.png" alt="">
+                        <span>Dropbox</span>
+                      </a>
+                    </div>
                   </div>
-                  <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                    <a href="#" class="connection-item">
-                      <img src="https://img.icons8.com/color/100/000000/dribbble.png" alt="">
-                      <span>Dribbble</span>
-                    </a>
+                  <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+                      <a href="#" class="connection-item">
+                        <img src="https://img.icons8.com/color/100/000000/bitbucket.png" alt="">
+                        <span>Bitbucket</span></a>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+                      <a href="#" class="connection-item">
+                        <img src="https://img.icons8.com/color/100/000000/remove-ads.png" alt="">
+                        <span>Facebook
+                          ads</span></a>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+                      <a href="#" class="connection-item">
+                        <img src="https://img.icons8.com/wired/64/000000/slack.png" alt="">
+                        <span>Slack</span>
+                      </a>
+                    </div>
                   </div>
-                  <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                    <a href="#" class="connection-item">
-                      <img src="https://img.icons8.com/color/100/000000/dropbox.png" alt="">
-                      <span>Dropbox</span>
-                    </a>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                    <a href="#" class="connection-item">
-                      <img src="https://img.icons8.com/color/100/000000/bitbucket.png" alt="">
-                      <span>Bitbucket</span></a>
-                  </div>
-                  <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                    <a href="#" class="connection-item">
-                      <img src="https://img.icons8.com/color/100/000000/remove-ads.png" alt="">
-                      <span>Facebook
-                        ads</span></a>
-                  </div>
-                  <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                    <a href="#" class="connection-item">
-                      <img src="https://img.icons8.com/wired/64/000000/slack.png" alt="">
-                      <span>Slack</span>
-                    </a>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="conntection-footer"><a href="#">More</a></div>
-              </li>
-            </ul>
+                </li>
+                <li>
+                  <div class="conntection-footer"><a href="#">More</a></div>
+                </li>
+              </ul>
+            </div>
           </li>
           <li class="nav-item dropdown nav-user"> <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2"
-              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img
-                src="https://img.icons8.com/color/2x/empty-pockets.png" alt=""
-                class="user-avatar-md rounded-circle"></a>
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <img src="https://img.icons8.com/color/2x/empty-pockets.png" alt="" class="user-avatar-md rounded-circle">
+            </a>
             <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
               <div class="nav-user-info">
-                <h5 class="mb-0 text-white nav-user-name">Berny Jimenez</h5> <span class="status"></span><span
-                  class="ml-2">Available</span>
-              </div> <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Account</a> <a
-                class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a> <a class="dropdown-item"
-                href="#"><i class="fas fa-power-off mr-2"></i>Logout</a>
+                <h5 class="mb-0 text-white nav-user-name">Berny Jimenez</h5>
+                <span class="status">
+                </span>
+                <span class="ml-2">Available</span>
+              </div>
+              <a class="dropdown-item" href="#">
+                <i class="fas fa-user mr-2"></i>Account
+              </a>
+              <a class="dropdown-item" href="#">
+                <i class="fas fa-cog mr-2">
+                </i>Setting</a>
+              <a class="dropdown-item" href="#">
+                <i class="fas fa-power-off mr-2">
+                </i>Logout</a>
             </div>
           </li>
         </ul>
@@ -152,98 +160,184 @@
     </nav>
   </div>
 </mat-toolbar>
-<div class="justify-content-center">
-  <div class="bg"></div>
-  <section class="ui">
-    <div class="lists">
-      <div class="list pt-3">
-        <div class="example-container">
-          <div class="row">
-            <header class="col">To Do</header>
-            <button class="btn btn-link">
-              <mat-icon class="col-2">more_horiz</mat-icon>
-            </button>
-          </div>
-          <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo" [cdkDropListConnectedTo]="[inProgressList]"
-            class="example-list" (cdkDropListDropped)="drop($event)">
-            <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
-          </div>
-          <footer>
-            <div>
-              <mat-accordion>
-                <mat-expansion-panel hideToggle>
-                  <mat-expansion-panel-header>
-                    <mat-panel-title>
-                      <button class="btn btn-basic">Add new card...</button>
-                    </mat-panel-title>
-                  </mat-expansion-panel-header>
-                  <input type="text" placeholder="Escribir...">
-                  <button class="btn btn-success btn-sm mr-1">Añadir</button>
-                </mat-expansion-panel>
-              </mat-accordion>
+<!--inician tarjetas de tareas-->
+<div class="container-fluid h-25 pt-3">
+  <div class="row h-100 h-75 justify-content-center align-items-center">
+    <div class="card col-17">
+      <div class="card-body w-100 col">
+        <div class="row vdivide ">
+          <div class="col-14">
+            <div class="bg">
+              <section class="ui">
+                <div class="lists">
+                  <div class="list pt-1">
+                    <div class="example-container" widht="18rem">
+                      <div class="row">
+                        <header class="col">To Do</header>
+                        <button class="btn btn-link" mat-raised-button>
+                          <mat-icon class="col-2">more_horiz</mat-icon>
+                        </button>
+                      </div>
+                      <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo"
+                        [cdkDropListConnectedTo]="[inProgressList]" class="example-list"
+                        (cdkDropListDropped)="drop($event)">
+                        <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+                      </div>
+                      <footer>
+                        <div>
+                          <mat-accordion>
+                            <mat-expansion-panel>
+                              <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                  <button class="btn btn-light btn-sm btn-block">Add new card...</button>
+                                </mat-panel-title>
+                              </mat-expansion-panel-header>
+
+                              <div class="reply-form" fxFlex="0 0 auto" fxLayout="row" fxLayoutAlign="center center">
+
+                                <form #replyForm="ngForm" (ngSubmit)="reply()" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                                 
+                                  <mat-form-field class="message-text" fxflex floatLabel="never" appearance="standard">
+                                    <mat-icon [matMenuTriggerFor]="menu">insert_emoticon</mat-icon>
+                                    <mat-menu #menu="matMenu">
+                                      
+                                      <div class="emoji-container">
+                                        <emoji-mart (emojiClick)="addEmoji($event)" (click)="noClick($event)">
+                                        </emoji-mart>
+                                      </div>
+                                   
+                                    </mat-menu>
+                                    <div class="textarea-chat-wrapper">
+                                      <textarea matInput #replyInput ngModel name="message" 
+                                        placeholder="Escribir..." [rows]="1" [matTextareaAutosize]="true">
+                                    </textarea>
+                                    </div>                               
+                                  </mat-form-field>
+                                </form>
+                              </div>
+                              <br>
+                              <button class="" class="btn btn-success btn-block my-auto py-revert ml-3">Añadir</button>
+                            </mat-expansion-panel>
+                          </mat-accordion>
+                        </div>
+                      </footer>
+                    </div>
+                  </div>
+                  <!--otra tarjeta-->
+                  <div class="list pt-1">
+                    <div class="example-container">
+                      <div class="row">
+                        <header class="col">In Progress</header>
+                        <button class="btn btn-link">
+                          <mat-icon class="col-2">more_horiz</mat-icon>
+                        </button>
+                      </div>
+                      <mat-divider></mat-divider>
+                      <div cdkDropList #inProgressList="cdkDropList" [cdkDropListData]="inProgress"
+                        [cdkDropListConnectedTo]="[doneList]" class="example-list" (cdkDropListDropped)="drop($event)">
+                        <div class="example-box" *ngFor="let item of inProgress" cdkDrag>{{item}}</div>
+                      </div>
+                      <footer>
+                        <div>
+                          <mat-accordion>
+                            <mat-expansion-panel>
+                              <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                  <button class="btn btn-light btn-sm btn-block">Add new card...</button>
+                                </mat-panel-title>
+                              </mat-expansion-panel-header>
+
+                              <div class="reply-form" fxFlex="0 0 auto" fxLayout="row" fxLayoutAlign="center center">
+
+                                <form #replyForm2="ngForm" (ngSubmit)="reply()" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                                 
+                                  <mat-form-field class="message-text" fxflex floatLabel="never" appearance="standard">
+                                    <mat-icon [matMenuTriggerFor]="menu">insert_emoticon</mat-icon>
+                                    <mat-menu #menu="matMenu">
+                                      
+                                      <div class="emoji-container">
+                                        <emoji-mart (emojiClick)="addEmoji2($event)" (click)="noClick($event)">
+                                        </emoji-mart>
+                                      </div>
+                                   
+                                    </mat-menu>
+                                    <div class="textarea-chat-wrapper">
+                                      <textarea matInput #replyInput2 ngModel name="message" 
+                                        placeholder="Escribir..." [rows]="1" [matTextareaAutosize]="true">
+                                    </textarea>
+                                    </div>                               
+                                  </mat-form-field>
+                                </form>
+                              </div>
+                              <br>
+                              <button class="" class="btn btn-success btn-block my-auto py-revert ml-3 ">Añadir</button>
+                            </mat-expansion-panel>
+                          </mat-accordion>
+                        </div>
+                      </footer>
+                    </div>
+                  </div>
+                  <!--otracard-->
+                  <div class="list pt-1">
+                    <div class="example-container">
+                      <div class="row">
+                        <header class="col">Done</header>
+                        <button class="btn btn-link">
+                          <mat-icon class="col-2">more_horiz</mat-icon>
+                        </button>
+                      </div>
+                      <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
+                        [cdkDropListConnectedTo]="[inProgressList]" class="example-list"
+                        (cdkDropListDropped)="drop($event)">
+                        <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
+                      </div>
+                      <footer>
+                        <div>
+                          <mat-accordion>
+                            <mat-expansion-panel>
+
+                              <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                  <button class="btn btn-light btn-sm btn-block">Add new card...</button>
+                                </mat-panel-title>
+                              </mat-expansion-panel-header>
+
+                              <div class="reply-form" fxFlex="0 0 auto" fxLayout="row" fxLayoutAlign="center center">
+
+                                <form #replyForm1="ngForm" (ngSubmit)="reply()" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                                 
+                                  <mat-form-field class="message-text" fxflex floatLabel="never" appearance="standard">
+                                    <mat-icon [matMenuTriggerFor]="menu">insert_emoticon</mat-icon>
+                                    <mat-menu #menu="matMenu">
+                                      
+                                      <div class="emoji-container">
+                                        <emoji-mart (emojiClick)="addEmoji1($event)" (click)="noClick($event)">
+                                        </emoji-mart>
+                                      </div>
+                                   
+                                    </mat-menu>
+                                    <div class="textarea-chat-wrapper">
+                                      <textarea matInput #replyInput1 ngModel name="message" 
+                                        placeholder="Escribir..." [rows]="1" [matTextareaAutosize]="true">
+                                    </textarea>
+                                    </div>                               
+                                  </mat-form-field>
+                                </form>
+                              </div>
+                              <br>
+                              <button class="" class="btn btn-success btn-block my-auto py-revert ml-3 ">Añadir</button>
+                            </mat-expansion-panel>
+                          </mat-accordion>
+                        </div>
+                      </footer>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
             </div>
-          </footer>
-        </div>
-      </div>
-      <div class="list pt-3">
-        <div class="example-container">
-          <div class="row">
-            <header class="col">In Progress</header>
-            <button class="btn btn-link">
-              <mat-icon class="col-2">more_horiz</mat-icon>
-            </button>
           </div>
-          <mat-divider></mat-divider>
-          <div cdkDropList #inProgressList="cdkDropList" [cdkDropListData]="inProgress"
-            [cdkDropListConnectedTo]="[doneList]" class="example-list" (cdkDropListDropped)="drop($event)">
-            <div class="example-box" *ngFor="let item of inProgress" cdkDrag>{{item}}</div>
-          </div>
-          <footer>
-            <div>
-              <mat-accordion>
-                <mat-expansion-panel hideToggle>
-                  <mat-expansion-panel-header>
-                    <mat-panel-title>
-                      <button class="btn btn-basic">Add new card...</button>
-                    </mat-panel-title>
-                  </mat-expansion-panel-header>
-                  <input type="text" placeholder="Escribir...">
-                  <button class="btn btn-success btn-sm mr-1">Añadir</button>
-                </mat-expansion-panel>
-              </mat-accordion>
-            </div>
-          </footer>
-        </div>
-      </div>
-      <div class="list pt-3">
-        <div class="example-container">
-          <div class="row">
-            <header class="col">Done</header>
-            <button class="btn btn-link">
-              <mat-icon class="col-2">more_horiz</mat-icon>
-            </button>
-          </div>
-          <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" [cdkDropListConnectedTo]="[inProgressList]"
-            class="example-list" (cdkDropListDropped)="drop($event)">
-            <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
-          </div>
-          <footer>
-            <div>
-              <mat-accordion>
-                <mat-expansion-panel hideToggle>
-                  <mat-expansion-panel-header>
-                    <mat-panel-title>
-                      <button class="btn btn-basic">Add new card...</button>
-                    </mat-panel-title>
-                  </mat-expansion-panel-header>
-                  <input type="text" placeholder="Escribir...">
-                  <button class="btn btn-success btn-sm mr-1" >Añadir</button>
-                </mat-expansion-panel>
-              </mat-accordion>
-            </div>
-          </footer>
+
         </div>
       </div>
     </div>
-  </section>
-</div>

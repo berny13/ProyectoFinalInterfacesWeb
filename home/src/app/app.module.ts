@@ -19,6 +19,21 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { PrincipalComponent } from './principal/principal.component';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatListModule} from '@angular/material/list';
+import { PickerModule } from '@ctrl/ngx-emoji-mart';
+import {ScrollingModule} from '@angular/cdk/scrolling';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatInputModule} from '@angular/material/input';
+import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
+
+
+
+
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -43,9 +58,43 @@ import {MatExpansionModule} from '@angular/material/expansion';
     LayoutModule,
     FlexLayoutModule,
     MatBottomSheetModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatListModule,
+    PickerModule,
+    ScrollingModule,
+    MatFormFieldModule,
+    MatMenuModule,
+    MatNativeDateModule, 
+    MatRippleModule,
+    MatInputModule
+
+  ],
+  exports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatSliderModule,
+    MatGridListModule,
+    MatIconModule,
+    MatCardModule,
+    DragDropModule,
+    MatDividerModule,
+    MatToolbarModule,
+    MatAutocompleteModule,
+    FormsModule, 
+    ReactiveFormsModule,
+    LayoutModule,
+    FlexLayoutModule,
+    MatBottomSheetModule,
+    MatExpansionModule,
+    MatListModule,
+    PickerModule,
+    ScrollingModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+
+}

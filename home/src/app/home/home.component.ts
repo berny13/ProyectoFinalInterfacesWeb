@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import {FormControl} from '@angular/forms';
-import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
-import {Observable} from 'rxjs';
-import {startWith, map} from 'rxjs/operators';
-import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
+import { Component, OnInit, EventEmitter, ElementRef, Inject, ViewChild } from '@angular/core';
+import { FormControl, NgForm } from '@angular/forms';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { Observable, Subscription } from 'rxjs';
+import { startWith, map } from 'rxjs/operators';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { MatBottomSheet, MatBottomSheetRef, MatBottomSheetModule } from '@angular/material/bottom-sheet';
+import { MAT_BOTTOM_SHEET_DATA } from '@angular/material/bottom-sheet';
+
 
 
 @Component({
@@ -13,7 +16,45 @@ import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 })
 export class HomeComponent implements OnInit {
 
-  
+  public _replyForm!: NgForm;
+  public _replyInput!: ElementRef;
+  public _replyInput1!: ElementRef;
+  public _replyForm1!: NgForm;
+  public _replyForm2!: NgForm;
+  public _replyInput2!: ElementRef;
+  public tasks!: [];
+  private _replyFormSuscription!: Subscription;
+
+  @ViewChild('replyForm', { static: false })
+  set replyForm(content: NgForm) {
+    this._replyForm = content;
+  }
+  @ViewChild('replyForm1', { static: false })
+  set replyForm1(content: NgForm) {
+    this._replyForm1 = content;
+  }
+
+  @ViewChild('replyInput', { static: false })
+  set replyInput(content: ElementRef) {
+    this._replyInput = content;
+  }
+  @ViewChild('replyInput1', { static: false })
+  set replyInput1(content: ElementRef) {
+    this._replyInput1 = content;
+  }
+
+  @ViewChild('replyForm2', { static: false })
+  set replyForm2(content: NgForm) {
+    this._replyForm2 = content;
+  }
+
+  @ViewChild('replyInput2', { static: false })
+  set replyInput2(content: ElementRef) {
+    this._replyInput2 = content;
+  }
+
+ 
+
 
   todo = [
     'Get to work',
@@ -42,19 +83,19 @@ export class HomeComponent implements OnInit {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
       transferArrayItem(event.previousContainer.data,
-                        event.container.data,
-                        event.previousIndex,
-                        event.currentIndex);
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex);
     }
   }
 
- 
+
 
   control = new FormControl();
   streets: string[] = ['tablero', 'cards', 'usuarios', 'home'];
   filteredStreets!: Observable<string[]>;
 
-  clear(){
+  clear() {
     this.streets = [''];
   }
   ngOnInit() {
@@ -62,7 +103,7 @@ export class HomeComponent implements OnInit {
       startWith(''),
       map(value => this._filter(value))
     );
-    
+
   }
 
   private _filter(value: string): string[] {
@@ -73,23 +114,79 @@ export class HomeComponent implements OnInit {
   private _normalizeValue(value: string): string {
     return value.toLowerCase().replace(/\s/g, '');
   }
-  
- /* agregar(){
-    this.card = this.card;
-    
-  } */
+
+   /*agregarCard1(){
+     this.card = this.card;
+     
+   } */
   constructor(breakpointObserver: BreakpointObserver) {
     breakpointObserver.observe([
       Breakpoints.HandsetLandscape,
       Breakpoints.HandsetPortrait
     ]).subscribe(result => {
       if (result.matches) {
-        
+
       }
     });
-    
 
+    this.tasks = [];
   }
+  
   panelOpenState = false;
 
+  noClick(ev: MouseEvent): void {
+    ev.stopPropagation();
+  }
+
+  addEmoji($event: any): void {
+    const input = this._replyInput.nativeElement;
+    (input as HTMLElement).focus();
+    if (input.value) {
+      this._replyForm.form.value.message = input.value + $event.emoji.native;
+      input.value = this._replyForm.form.value.message;
+    } else {
+      input.value = $event.emoji.native;
+      this._replyForm.form.value.message = $event.emoji.native;
+    }
+  }
+
+  reply(): void{
+    if (!this._replyForm1.form.value.message || (this._replyForm1.form.value.message === '')) {
+      
+    } return;
+  }
+
+  addEmoji1($event: any): void {
+    const input = this._replyInput1.nativeElement;
+    (input as HTMLElement).focus();
+    if (input.value) {
+      this._replyForm1.form.value.message = input.value + $event.emoji.native;
+      input.value = this._replyForm1.form.value.message;
+    } else {
+      input.value = $event.emoji.native;
+      this._replyForm1.form.value.message = $event.emoji.native;
+    }
+  }
+
+  addEmoji2($event: any): void {
+    const input = this._replyInput2.nativeElement;
+    (input as HTMLElement).focus();
+    if (input.value) {
+      this._replyForm2.form.value.message = input.value + $event.emoji.native;
+      input.value = this._replyForm2.form.value.message;
+    } else {
+      input.value = $event.emoji.native;
+      this._replyForm2.form.value.message = $event.emoji.native;
+    }
+  }
 }
+
+
+
+
+
+
+
+
+
+
