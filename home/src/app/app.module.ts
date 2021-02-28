@@ -26,6 +26,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatInputModule} from '@angular/material/input';
 import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 
 
 
@@ -66,7 +68,9 @@ import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
     MatMenuModule,
     MatNativeDateModule, 
     MatRippleModule,
-    MatInputModule
+    MatInputModule,
+    MatSidenavModule,
+    NoopAnimationsModule
 
   ],
   exports: [

@@ -1,9 +1,9 @@
 export class done{
 
-   _replyForm1!: string;
+  tarjetadone!: string;
    
     constructor(tarjetadone:string){
-      this._replyForm1 = tarjetadone;
+      this.tarjetadone = tarjetadone;
       
     }
   }

@@ -6,7 +6,9 @@ import { startWith, map } from 'rxjs/operators';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { MatBottomSheet, MatBottomSheetRef, MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MAT_BOTTOM_SHEET_DATA } from '@angular/material/bottom-sheet';
-import { inProgress } from './inProgress.model';
+import { inProgress } from './models/inProgress.model';
+import { done } from './models/done.model';
+import { todo } from './models/todo.model';
 
 
 
@@ -25,6 +27,8 @@ export class HomeComponent implements OnInit {
   public _replyInput2!: ElementRef;
   private _replyFormSuscription!: Subscription;
   public tarjetainProgress!:string;
+  public tarjetadone!: string;
+  public tarjetatodo!: string;
 
   @ViewChild('replyForm', { static: false })
   set replyForm(content: NgForm) {
@@ -57,30 +61,32 @@ export class HomeComponent implements OnInit {
  
 
 
-  todo = [
-    'Get to work',
-    'Pick up groceries',
-    'Go home',
-    'Fall asleep'
-  ];
-
-  done = [
-    'Get up',
-    'Brush teeth',
-    'Take a shower',
-    'Check e-mail',
-    'Walk dog'
-  ];
-
+  addtodo: todo[] = [];
+  adddone: done[] = [];
   addinprogress: inProgress[] = [];
+
+  tarjetatodoadd(){
+    let todos = new todo(this.tarjetatodo);
+    this.addtodo.push(todos);
+    this.limpiar();
+    
+  }
+
+  tarjetadoneadd(){
+    let donees = new done(this.tarjetadone);
+    this.adddone.push(donees);
+    this.limpiar2();
+    
+  }
 
   tarjetainprogressadd(){
     let inprogresso = new inProgress(this.tarjetainProgress);
     this.addinprogress.push(inprogresso);
-    this.limpiar()
+    this.limpiar1();
+    
   }
 
-  drop(event: CdkDragDrop<string[], string[]>) {
+  drop(event: CdkDragDrop<string[], any>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
@@ -118,7 +124,23 @@ export class HomeComponent implements OnInit {
   }
 
 limpiar(): void{
- this.tarjetainProgress= '';
+ this.tarjetatodo= '';
+}
+limpiar1(): void{
+  this.tarjetainProgress= '';
+ }
+ limpiar2(): void{
+  this.tarjetadone= '';
+ }
+
+ deletetodo(tarjetatodo:any){
+   this.addtodo.splice(this.addtodo.indexOf(tarjetatodo),1);
+ }
+ deleteinprogress(tarjetainprogress:any){
+  this.addinprogress.splice(this.addinprogress.indexOf(tarjetainprogress),1);
+}
+deletedone(tarjetadone:any){
+  this.adddone.splice(this.adddone.indexOf(tarjetadone),1);
 }
   constructor(breakpointObserver: BreakpointObserver) {
     breakpointObserver.observe([

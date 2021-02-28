@@ -1,9 +1,9 @@
 export class todo{
 
-    _replyForm!: string;
+  tarjetatodo !: string;
     
      constructor(tarjetatodo:string){
-       this._replyForm = tarjetatodo;
+       this.tarjetatodo = tarjetatodo;
        
      }
    }

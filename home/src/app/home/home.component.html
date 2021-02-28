@@ -178,10 +178,13 @@
                           <mat-icon class="col-2">more_horiz</mat-icon>
                         </button>
                       </div>
-                      <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo"
+                      <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="addtodo"
                         [cdkDropListConnectedTo]="[inProgressList]" class="example-list"
-                        (cdkDropListDropped)="drop($event)">
-                        <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+                        >
+                        <div class="example-box" *ngFor="let item of addtodo" cdkDrag>{{item.tarjetatodo}} 
+                          <button  matTooltip="Delete todos" matTooltipPosition="above" mat-icon-button (click)="deletetodo(tarjetatodo)">
+                          <mat-icon aria-label="Example icon-button with a heart icon">delete</mat-icon>
+                      </button></div>
                       </div>
                       <footer>
                         <div>
@@ -209,7 +212,7 @@
 
                                     </mat-menu>
                                     <div class="textarea-chat-wrapper">
-                                      <textarea matInput #replyInput ngModel name="message" placeholder="Escribir..."
+                                      <textarea matInput #replyInput [(ngModel)]="tarjetatodo" name="message" placeholder="Escribir..."
                                         [rows]="1" [matTextareaAutosize]="true">
                                     </textarea>
                                     </div>
@@ -217,7 +220,7 @@
                                 </form>
                               </div>
                               <br>
-                              <button class="" class="btn btn-success btn-block my-auto py-revert ml-3">Añadir</button>
+                              <button class="" class="btn btn-success btn-block my-auto py-revert" (click)="tarjetatodoadd()">Añadir</button>
                             </mat-expansion-panel>
                           </mat-accordion>
                         </div>
@@ -236,7 +239,10 @@
                       <mat-divider></mat-divider>
                       <div cdkDropList #inProgressList="cdkDropList" [cdkDropListData]="addinprogress"
                         [cdkDropListConnectedTo]="[doneList]" class="example-list">
-                        <div class="example-box" *ngFor="let item of addinprogress" cdkDrag>{{item.tarjetainProgress}}
+                        <div class="example-box" *ngFor="let item of addinprogress" cdkDrag>{{item.tarjetainProgress}} 
+                          <button  matTooltip="Delete inprogress" matTooltipPosition="above" mat-icon-button (click)="deleteinprogress(tarjetainProgress)">
+                            <mat-icon aria-label="Example icon-button with a heart icon">delete</mat-icon>
+                        </button>
                         </div>
                       </div>
                       <footer>
@@ -265,7 +271,7 @@
 
                                     </mat-menu>
                                     <div class="textarea-chat-wrapper">
-                                      <textarea matInput #replyInput2 ngModel name="message" placeholder="Escribir..."
+                                      <textarea matInput #replyInput2 [(ngModel)]="tarjetainProgress" name="message" placeholder="Escribir..."
                                         [rows]="1" [matTextareaAutosize]="true">
                                     </textarea>
                                     </div>
@@ -273,7 +279,7 @@
                                 </form>
                               </div>
                               <br>
-                              <button class="btn btn-success btn-block my-auto py-revert ml-3"
+                              <button class="btn btn-success btn-block my-auto py-revert"
                                 (click)="tarjetainprogressadd()">Añadir</button>
                             </mat-expansion-panel>
                           </mat-accordion>
@@ -290,10 +296,13 @@
                           <mat-icon class="col-2">more_horiz</mat-icon>
                         </button>
                       </div>
-                      <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
+                      <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="adddone"
                         [cdkDropListConnectedTo]="[inProgressList]" class="example-list"
-                        (cdkDropListDropped)="drop($event)">
-                        <div class="example-box" *ngFor="let item of addinprogress" cdkDrag>{{item}}</div>
+                        >
+                        <div class="example-box" *ngFor="let item of adddone">{{item.tarjetadone}} 
+                          <button  matTooltip="Delete done" matTooltipPosition="above" mat-icon-button (click)="deletedone(tarjetadone)">
+                          <mat-icon aria-label="Example icon-button with a heart icon">delete</mat-icon>
+                      </button></div>
                       </div>
                       <footer>
                         <div>
@@ -322,7 +331,7 @@
 
                                     </mat-menu>
                                     <div class="textarea-chat-wrapper">
-                                      <textarea matInput #replyInput1 ngModel name="message" placeholder="Escribir..."
+                                      <textarea matInput #replyInput1  [(ngModel)]="tarjetadone" name="message" placeholder="Escribir..."
                                         [rows]="1" [matTextareaAutosize]="true">
                                     </textarea>
                                     </div>
@@ -330,7 +339,7 @@
                                 </form>
                               </div>
                               <br>
-                              <button class="" class="btn btn-success btn-block my-auto py-revert ml-3 ">Añadir</button>
+                              <button class="" class="btn btn-success btn-block my-auto py-revert" (click)="tarjetadoneadd()">Añadir</button>
                             </mat-expansion-panel>
                           </mat-accordion>
                         </div>
