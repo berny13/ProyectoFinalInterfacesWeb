@@ -13,7 +13,7 @@ body {
   vertical-align: top;
 }
 .mat-icon {
-  color: #82849f;
+  color: white;
   cursor: pointer;
 }
 
@@ -162,8 +162,8 @@ $list-footer-height: 36px;
 $list-border-radius: 5px;
 $card-border-radius: 3px;
 // Colors
-$board-bg-color: #0079bf;
-$appbar-bg-color: #0067a3;
+$board-bg-color: #026aa7;
+$appbar-bg-color: #026aa7;
 $list-bg-color: #e2e4e6;
 
 .example-spacer {
@@ -271,7 +271,8 @@ $list-bg-color: #e2e4e6;
   -webkit-box-shadow: 0px 0px 28px 0px rgba(82, 63, 105, 0.13);
   box-shadow: 0px 0px 28px 0px rgba(82, 63, 105, 0.13);
   -webkit-transition: all 0.3s ease;
-  min-height: 60px;
+  min-height: 40px;
+  background: #026aa7;
 }
 
 .navbar-brand {
@@ -287,7 +288,7 @@ $list-bg-color: #e2e4e6;
 
 .navbar-brand:hover {
   text-align: center;
-  color: #007bff;
+  color: #026aa7;
 }
 
 .navbar-right-top .nav-item {
@@ -300,7 +301,7 @@ $list-bg-color: #e2e4e6;
 
 .navbar-right-top .nav-item .nav-link {
   padding: 13px 20px;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 2;
   color: #82849f;
 }
@@ -398,7 +399,7 @@ $list-bg-color: #e2e4e6;
   padding: 10px 0px;
   line-height: 1.5;
   font-weight: 700;
-  background-color: #5969ff;
+  background-color: #026aa7;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
 }
@@ -488,7 +489,7 @@ $list-bg-color: #e2e4e6;
 }
 
 .nav-user-info {
-  background-color: #5969ff;
+  background-color: #026aa7;
   line-height: 1.4;
   padding: 12px;
   color: #fff;
