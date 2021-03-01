@@ -9,6 +9,7 @@ import { MAT_BOTTOM_SHEET_DATA } from '@angular/material/bottom-sheet';
 import { inProgress } from './models/inProgress.model';
 import { done } from './models/done.model';
 import { todo } from './models/todo.model';
+import { Router } from '@angular/router';
 
 
 
@@ -142,7 +143,7 @@ limpiar1(): void{
 deletedone(tarjetadone:any){
   this.adddone.splice(this.adddone.indexOf(tarjetadone),1);
 }
-  constructor(breakpointObserver: BreakpointObserver) {
+  constructor(breakpointObserver: BreakpointObserver, private router: Router) {
     breakpointObserver.observe([
       Breakpoints.HandsetLandscape,
       Breakpoints.HandsetPortrait
@@ -209,6 +210,9 @@ deletedone(tarjetadone:any){
       input.value = $event.emoji.native;
       this._replyForm2.form.value.message = $event.emoji.native;
     }
+  }
+  irprincipal(){
+    this.router.navigate(['/']);
   }
 }
 

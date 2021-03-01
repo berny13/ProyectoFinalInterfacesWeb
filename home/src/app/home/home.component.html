@@ -5,10 +5,25 @@
   <div class="dashboard-header">
     <nav class="navbar navbar-expand-lg bg-blue fixed-top">
       <div class="btn-toolbar">
-        <button class="btn btn-default btn-sm mr-1" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+        <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
           <mat-icon>toc</mat-icon>
-        </button>
-        <button class="btn btn-default btn-sm mr-1" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+        </a>
+        <div class="dropdown-menu dropdown-menu-left nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
+          <div class="nav-user-info">
+            <h5 class="mb-0 text-white nav-user-name">Configuración</h5>
+            <span class="status">
+            </span>
+          </div>
+          <a class="dropdown-item" href="#">
+            <i class="fas fa-user mr-2"></i>Sobre mi
+          </a>
+          <a class="dropdown-item" href="#">
+            <i class="fas fa-cog mr-2">
+            </i>Derechos Reservados</a>
+        </div>
+        <button (click)="irprincipal()" routerLink="/" class="btn btn-default btn-sm mr-1" type="button"
+          data-toggle="collapse" data-target=".dual-collapse2">
           <mat-icon>home</mat-icon>
         </button>
       </div>
@@ -36,7 +51,9 @@
               </a>
               <ul class="dropdown-menu dropdown-menu-right notification-dropdown">
                 <li>
-                  <div class="notification-title"> Notification</div>
+                  <div class="nav-user-info">
+                  <div class="notification-title"> Notificaciones</div>
+                </div>
                   <div class="notification-list">
                     <div class="list-group"> <a href="#" class="list-group-item list-group-item-action active">
                         <div class="notification-info">
@@ -71,7 +88,7 @@
                   </div>
                 </li>
                 <li>
-                  <div class="list-footer"> <a href="#">View all notifications</a></div>
+                  <div class="list-footer"> <a href="#">Ver todas las notificaciones</a></div>
                 </li>
               </ul>
             </div>
@@ -127,28 +144,29 @@
                   </div>
                 </li>
                 <li>
-                  <div class="conntection-footer"><a href="#">More</a></div>
+                  <div class="conntection-footer"><a href="#">Más</a></div>
                 </li>
               </ul>
             </div>
           </li>
           <li class="nav-item dropdown nav-user"> <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2"
               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <img src="https://img.icons8.com/material/72/user-male-circle--v1.png" alt="" class="user-avatar-md rounded-circle">
+              <img src="https://img.icons8.com/material/72/user-male-circle--v1.png" alt=""
+                class="user-avatar-md rounded-circle">
             </a>
             <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
               <div class="nav-user-info">
                 <h5 class="mb-0 text-white nav-user-name">Berny Jimenez</h5>
                 <span class="status">
                 </span>
-                <span class="ml-2">Available</span>
+                <span class="ml-2">Disponible</span>
               </div>
               <a class="dropdown-item" href="#">
-                <i class="fas fa-user mr-2"></i>Account
+                <i class="fas fa-user mr-2"></i>Cuenta
               </a>
               <a class="dropdown-item" href="#">
                 <i class="fas fa-cog mr-2">
-                </i>Setting</a>
+                </i>Opciones</a>
               <a class="dropdown-item" href="#">
                 <i class="fas fa-power-off mr-2">
                 </i>Logout</a>
@@ -157,202 +175,211 @@
         </ul>
       </div>
     </nav>
-  </div>  
+  </div>
 </mat-toolbar>
-<div Style="background-image:url(https://cdn.pixabay.com/photo/2013/10/02/23/03/mountains-190055_960_720.jpg)"> 
-<!--inician tarjetas de tareas-->
-<div class="container-fluid h-25 ">
-  <div class="row h-100 h-75 justify-content-center align-items-center">
-    <div class="card col-17">
-      <div class="card-body w-100 col">
-        <div class="row divide ">
-          <div class="col-14">
-            <div class="bg">
-              <section class="ui">
-                <div class="lists">
-                  <div class="list ">
-                    <div class="example-container" widht="18rem">
-                      <div class="row">
-                        <header class="col">To Do</header>
-                        <button class="btn btn-link" mat-raised-button>
-                          <mat-icon class="col-2">more_horiz</mat-icon>
-                        </button>
-                      </div>
-                      <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="addtodo"
-                        [cdkDropListConnectedTo]="[inProgressList]" class="example-list"
-                        >
-                        <div class="example-box" *ngFor="let item of addtodo" cdkDrag>{{item.tarjetatodo}} 
-                          <button  matTooltip="Delete todos" matTooltipPosition="above" mat-icon-button (click)="deletetodo(tarjetatodo)">
-                          <mat-icon aria-label="Example icon-button with a heart icon">delete</mat-icon>
-                      </button></div>
-                      </div>
-                      <footer>
-                        <div>
-                          <mat-accordion>
-                            <mat-expansion-panel>
-                              <mat-expansion-panel-header>
-                                <mat-panel-title>
-                                  <button class="btn btn-light btn-sm btn-block">Add new card...</button>
-                                </mat-panel-title>
-                              </mat-expansion-panel-header>
-
-                              <div class="reply-form" fxFlex="0 0 auto" fxLayout="row" fxLayoutAlign="center center">
-
-                                <form #replyForm="ngForm" (ngSubmit)="reply()" fxFlex fxLayout="row"
-                                  fxLayoutAlign="start center">
-
-                                  <mat-form-field class="message-text" fxflex floatLabel="never" appearance="standard">
-                                    <mat-icon [matMenuTriggerFor]="menu">insert_emoticon</mat-icon>
-                                    <mat-menu #menu="matMenu">
-
-                                      <div class="emoji-container">
-                                        <emoji-mart (emojiClick)="addEmoji($event)" (click)="noClick($event)">
-                                        </emoji-mart>
-                                      </div>
-
-                                    </mat-menu>
-                                    <div class="textarea-chat-wrapper">
-                                      <textarea matInput #replyInput [(ngModel)]="tarjetatodo" name="message" placeholder="Escribir..."
-                                        [rows]="1" [matTextareaAutosize]="true">
-                                    </textarea>
-                                    </div>
-                                  </mat-form-field>
-                                </form>
-                              </div>
-                              <br>
-                              <button class="" class="btn btn-success btn-block my-auto py-revert" (click)="tarjetatodoadd()">Añadir</button>
-                            </mat-expansion-panel>
-                          </mat-accordion>
+<div Style="background-image:url(https://cdn.pixabay.com/photo/2013/10/02/23/03/mountains-190055_960_720.jpg)">
+  <!--inician tarjetas de tareas-->
+  <div class="container-fluid h-25 ">
+    <div class="row h-100 h-75 justify-content-center align-items-center">
+      <div class="card col-17">
+        <div class="card-body w-100 col">
+          <div class="row divide ">
+            <div class="col-14">
+              <div class="bg">
+                <section class="ui">
+                  <div class="lists">
+                    <div class="list ">
+                      <div class="example-container" widht="18rem">
+                        <div class="row">
+                          <header class="col">To Do</header>
+                          <button class="btn btn-link" mat-raised-button>
+                            <mat-icon class="col-2">more_horiz</mat-icon>
+                          </button>
                         </div>
-                      </footer>
+                        <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="addtodo"
+                          [cdkDropListConnectedTo]="[inProgressList]" class="example-list">
+                          <div class="example-box" *ngFor="let item of addtodo" cdkDrag>{{item.tarjetatodo}}
+                            <button matTooltip="Delete todos" matTooltipPosition="above" mat-icon-button
+                              (click)="deletetodo(tarjetatodo)">
+                              <mat-icon aria-label="Example icon-button with a heart icon">delete</mat-icon>
+                            </button>
+                          </div>
+                        </div>
+                        <footer>
+                          <div>
+                            <mat-accordion>
+                              <mat-expansion-panel>
+                                <mat-expansion-panel-header>
+                                  <mat-panel-title>
+                                    <button class="btn btn-light btn-sm btn-block">Add new card...</button>
+                                  </mat-panel-title>
+                                </mat-expansion-panel-header>
+
+                                <div class="reply-form" fxFlex="0 0 auto" fxLayout="row" fxLayoutAlign="center center">
+
+                                  <form #replyForm="ngForm" (ngSubmit)="reply()" fxFlex fxLayout="row"
+                                    fxLayoutAlign="start center">
+
+                                    <mat-form-field class="message-text" fxflex floatLabel="never"
+                                      appearance="standard">
+                                      <mat-icon [matMenuTriggerFor]="menu">insert_emoticon</mat-icon>
+                                      <mat-menu #menu="matMenu">
+
+                                        <div class="emoji-container">
+                                          <emoji-mart (emojiClick)="addEmoji($event)" (click)="noClick($event)">
+                                          </emoji-mart>
+                                        </div>
+
+                                      </mat-menu>
+                                      <div class="textarea-chat-wrapper">
+                                        <textarea matInput #replyInput [(ngModel)]="tarjetatodo" name="message"
+                                          placeholder="Escribir..." [rows]="1" [matTextareaAutosize]="true">
+                                    </textarea>
+                                      </div>
+                                    </mat-form-field>
+                                  </form>
+                                </div>
+                                <br>
+                                <button class="" class="btn btn-success btn-block my-auto py-revert"
+                                  (click)="tarjetatodoadd()">Añadir</button>
+                              </mat-expansion-panel>
+                            </mat-accordion>
+                          </div>
+                        </footer>
+                      </div>
+                    </div>
+                    <!--otra tarjeta-->
+                    <div class="list pt-1">
+                      <div class="example-container">
+                        <div class="row">
+                          <header class="col">In Progress</header>
+                          <button class="btn btn-link">
+                            <mat-icon class="col-2">more_horiz</mat-icon>
+                          </button>
+                        </div>
+                        <mat-divider></mat-divider>
+                        <div cdkDropList #inProgressList="cdkDropList" [cdkDropListData]="addinprogress"
+                          [cdkDropListConnectedTo]="[doneList]" class="example-list">
+                          <div class="example-box" *ngFor="let item of addinprogress" cdkDrag>{{item.tarjetainProgress}}
+                            <button matTooltip="Delete inprogress" matTooltipPosition="above" mat-icon-button
+                              (click)="deleteinprogress(tarjetainProgress)">
+                              <mat-icon aria-label="Example icon-button with a heart icon">delete</mat-icon>
+                            </button>
+                          </div>
+                        </div>
+                        <footer>
+                          <div>
+                            <mat-accordion>
+                              <mat-expansion-panel>
+                                <mat-expansion-panel-header>
+                                  <mat-panel-title>
+                                    <button class="btn btn-light btn-sm btn-block">Add new card...</button>
+                                  </mat-panel-title>
+                                </mat-expansion-panel-header>
+
+                                <div class="reply-form" fxFlex="0 0 auto" fxLayout="row" fxLayoutAlign="center center">
+
+                                  <form #replyForm2="ngForm" (ngSubmit)="reply2()" fxFlex fxLayout="row"
+                                    fxLayoutAlign="start center">
+
+                                    <mat-form-field class="message-text" fxflex floatLabel="never"
+                                      appearance="standard">
+                                      <mat-icon [matMenuTriggerFor]="menu2">insert_emoticon</mat-icon>
+                                      <mat-menu #menu2="matMenu">
+
+                                        <div class="emoji-container">
+                                          <emoji-mart (emojiClick)="addEmoji2($event)" (click)="noClick($event)">
+                                          </emoji-mart>
+                                        </div>
+
+                                      </mat-menu>
+                                      <div class="textarea-chat-wrapper">
+                                        <textarea matInput #replyInput2 [(ngModel)]="tarjetainProgress" name="message"
+                                          placeholder="Escribir..." [rows]="1" [matTextareaAutosize]="true">
+                                    </textarea>
+                                      </div>
+                                    </mat-form-field>
+                                  </form>
+                                </div>
+                                <br>
+                                <button class="btn btn-success btn-block my-auto py-revert"
+                                  (click)="tarjetainprogressadd()">Añadir</button>
+                              </mat-expansion-panel>
+                            </mat-accordion>
+                          </div>
+                        </footer>
+                      </div>
+                    </div>
+                    <!--otracard-->
+                    <div class="list pt-1">
+                      <div class="example-container">
+                        <div class="row">
+                          <header class="col">Done</header>
+                          <button class="btn btn-link">
+                            <mat-icon class="col-2">more_horiz</mat-icon>
+                          </button>
+                        </div>
+                        <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="adddone"
+                          [cdkDropListConnectedTo]="[inProgressList]" class="example-list">
+                          <div class="example-box" *ngFor="let item of adddone">{{item.tarjetadone}}
+                            <button matTooltip="Delete done" matTooltipPosition="above" mat-icon-button
+                              (click)="deletedone(tarjetadone)">
+                              <mat-icon aria-label="Example icon-button with a heart icon">delete</mat-icon>
+                            </button>
+                          </div>
+                        </div>
+                        <footer>
+                          <div>
+                            <mat-accordion>
+                              <mat-expansion-panel>
+
+                                <mat-expansion-panel-header>
+                                  <mat-panel-title>
+                                    <button class="btn btn-light btn-sm btn-block">Add new card...</button>
+                                  </mat-panel-title>
+                                </mat-expansion-panel-header>
+
+                                <div class="reply-form" fxFlex="0 0 auto" fxLayout="row" fxLayoutAlign="center center">
+
+                                  <form #replyForm1="ngForm" (ngSubmit)="reply1()" fxFlex fxLayout="row"
+                                    fxLayoutAlign="start center">
+
+                                    <mat-form-field class="message-text" fxflex floatLabel="never"
+                                      appearance="standard">
+                                      <mat-icon [matMenuTriggerFor]="menu1">insert_emoticon</mat-icon>
+                                      <mat-menu #menu1="matMenu">
+
+                                        <div class="emoji-container">
+                                          <emoji-mart (emojiClick)="addEmoji1($event)" (click)="noClick($event)">
+                                          </emoji-mart>
+                                        </div>
+
+                                      </mat-menu>
+                                      <div class="textarea-chat-wrapper">
+                                        <textarea matInput #replyInput1 [(ngModel)]="tarjetadone" name="message"
+                                          placeholder="Escribir..." [rows]="1" [matTextareaAutosize]="true">
+                                    </textarea>
+                                      </div>
+                                    </mat-form-field>
+                                  </form>
+                                </div>
+                                <br>
+                                <button class="" class="btn btn-success btn-block my-auto py-revert"
+                                  (click)="tarjetadoneadd()">Añadir</button>
+                              </mat-expansion-panel>
+                            </mat-accordion>
+                          </div>
+                        </footer>
+                      </div>
                     </div>
                   </div>
-                  <!--otra tarjeta-->
-                  <div class="list pt-1">
-                    <div class="example-container">
-                      <div class="row">
-                        <header class="col">In Progress</header>
-                        <button class="btn btn-link">
-                          <mat-icon class="col-2">more_horiz</mat-icon>
-                        </button>
-                      </div>
-                      <mat-divider></mat-divider>
-                      <div cdkDropList #inProgressList="cdkDropList" [cdkDropListData]="addinprogress"
-                        [cdkDropListConnectedTo]="[doneList]" class="example-list">
-                        <div class="example-box" *ngFor="let item of addinprogress" cdkDrag>{{item.tarjetainProgress}} 
-                          <button  matTooltip="Delete inprogress" matTooltipPosition="above" mat-icon-button (click)="deleteinprogress(tarjetainProgress)">
-                            <mat-icon aria-label="Example icon-button with a heart icon">delete</mat-icon>
-                        </button>
-                        </div>
-                      </div>
-                      <footer>
-                        <div>
-                          <mat-accordion>
-                            <mat-expansion-panel>
-                              <mat-expansion-panel-header>
-                                <mat-panel-title>
-                                  <button class="btn btn-light btn-sm btn-block">Add new card...</button>
-                                </mat-panel-title>
-                              </mat-expansion-panel-header>
+                </section>
 
-                              <div class="reply-form" fxFlex="0 0 auto" fxLayout="row" fxLayoutAlign="center center">
-
-                                <form #replyForm2="ngForm" (ngSubmit)="reply2()" fxFlex fxLayout="row"
-                                  fxLayoutAlign="start center">
-
-                                  <mat-form-field class="message-text" fxflex floatLabel="never" appearance="standard">
-                                    <mat-icon [matMenuTriggerFor]="menu2">insert_emoticon</mat-icon>
-                                    <mat-menu #menu2="matMenu">
-
-                                      <div class="emoji-container">
-                                        <emoji-mart (emojiClick)="addEmoji2($event)" (click)="noClick($event)">
-                                        </emoji-mart>
-                                      </div>
-
-                                    </mat-menu>
-                                    <div class="textarea-chat-wrapper">
-                                      <textarea matInput #replyInput2 [(ngModel)]="tarjetainProgress" name="message" placeholder="Escribir..."
-                                        [rows]="1" [matTextareaAutosize]="true">
-                                    </textarea>
-                                    </div>
-                                  </mat-form-field>
-                                </form>
-                              </div>
-                              <br>
-                              <button class="btn btn-success btn-block my-auto py-revert"
-                                (click)="tarjetainprogressadd()">Añadir</button>
-                            </mat-expansion-panel>
-                          </mat-accordion>
-                        </div>
-                      </footer>
-                    </div>
-                  </div>
-                  <!--otracard-->
-                  <div class="list pt-1">
-                    <div class="example-container">
-                      <div class="row">
-                        <header class="col">Done</header>
-                        <button class="btn btn-link">
-                          <mat-icon class="col-2">more_horiz</mat-icon>
-                        </button>
-                      </div>
-                      <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="adddone"
-                        [cdkDropListConnectedTo]="[inProgressList]" class="example-list"
-                        >
-                        <div class="example-box" *ngFor="let item of adddone">{{item.tarjetadone}} 
-                          <button  matTooltip="Delete done" matTooltipPosition="above" mat-icon-button (click)="deletedone(tarjetadone)">
-                          <mat-icon aria-label="Example icon-button with a heart icon">delete</mat-icon>
-                      </button></div>
-                      </div>
-                      <footer>
-                        <div>
-                          <mat-accordion>
-                            <mat-expansion-panel>
-
-                              <mat-expansion-panel-header>
-                                <mat-panel-title>
-                                  <button class="btn btn-light btn-sm btn-block">Add new card...</button>
-                                </mat-panel-title>
-                              </mat-expansion-panel-header>
-
-                              <div class="reply-form" fxFlex="0 0 auto" fxLayout="row" fxLayoutAlign="center center">
-
-                                <form #replyForm1="ngForm" (ngSubmit)="reply1()" fxFlex fxLayout="row"
-                                  fxLayoutAlign="start center">
-
-                                  <mat-form-field class="message-text" fxflex floatLabel="never" appearance="standard">
-                                    <mat-icon [matMenuTriggerFor]="menu1">insert_emoticon</mat-icon>
-                                    <mat-menu #menu1="matMenu">
-
-                                      <div class="emoji-container">
-                                        <emoji-mart (emojiClick)="addEmoji1($event)" (click)="noClick($event)">
-                                        </emoji-mart>
-                                      </div>
-
-                                    </mat-menu>
-                                    <div class="textarea-chat-wrapper">
-                                      <textarea matInput #replyInput1  [(ngModel)]="tarjetadone" name="message" placeholder="Escribir..."
-                                        [rows]="1" [matTextareaAutosize]="true">
-                                    </textarea>
-                                    </div>
-                                  </mat-form-field>
-                                </form>
-                              </div>
-                              <br>
-                              <button class="" class="btn btn-success btn-block my-auto py-revert" (click)="tarjetadoneadd()">Añadir</button>
-                            </mat-expansion-panel>
-                          </mat-accordion>
-                        </div>
-                      </footer>
-                    </div>
-                  </div>
-                </div>
-              </section>
-
+              </div>
             </div>
-          </div>
 
+          </div>
         </div>
       </div>
     </div>
-  </div>
+</div>

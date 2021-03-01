@@ -13,14 +13,14 @@ body {
   vertical-align: top;
 }
 .mat-icon {
-  color: white;
+  color: #333;
   cursor: pointer;
 }
 
 .example-list {
   border: solid 1px #ccc;
   min-height: 60px;
-  background: white;
+  background: rgba(136, 136, 136, 0.198);
   border-radius: 4px;
   overflow: hidden;
   display: block;
@@ -74,6 +74,7 @@ body {
                 max-height: 118px;
                 padding: 10px;
                 overflow: auto;
+                background-color: #686972;
 
                 .textarea {
                   overflow: auto;
@@ -175,7 +176,7 @@ $list-bg-color: #e2e4e6;
   display: grid;
   grid-template-rows: $appbar-height $navbar-height 1fr;
   //grid-template-columns: 100%;
-  color: #eee;
+  color: #333;
 }
 
 .example-form {
@@ -325,12 +326,11 @@ $list-bg-color: #e2e4e6;
 
 .notification-title {
   font-size: 14px;
-  color: #3d405c;
+  color: white;
   text-align: center;
   padding: 8px 0px;
-  border-bottom: 1px solid #e3e3e3;
   line-height: 1.5;
-  background-color: #fffffe;
+
 }
 
 .notification-list .list-group-item {

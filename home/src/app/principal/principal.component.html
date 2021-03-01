@@ -1,4 +1,178 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<mat-toolbar>
+  <div class="dashboard-header">
+    <nav class="navbar navbar-expand-lg bg-blue fixed-top">
+      <div class="btn-toolbar">
+        <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          <mat-icon>toc</mat-icon>
+        </a>
+        <div class="dropdown-menu dropdown-menu-left nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
+          <div class="nav-user-info">
+            <h5 class="mb-0 text-white nav-user-name">Configuración</h5>
+            <span class="status">
+            </span>
+          </div>
+          <a class="dropdown-item" href="#">
+            <i class="fas fa-user mr-2"></i>Sobre mi
+          </a>
+          <a class="dropdown-item" href="#">
+            <i class="fas fa-cog mr-2">
+            </i>Derechos Reservados</a>
+        </div>
+        <button class="btn btn-default btn-sm mr-1" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+          <mat-icon routerLink="home" (click)="irhome()">home</mat-icon>
+        </button>
+      </div>
+      <a class="align-items-center" class="text-light" href="#">TRELLO-BERNY</a>
+      <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto navbar-right-top">
+          <li class="btn-toolbar pull-right">
+            <div class="btn-toolbar pull-right">
+              <a class="nav-link nav-icons" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <button class="btn btn-default btn-sm">
+                  <mat-icon>notification_important</mat-icon>
+                </button>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-right notification-dropdown">
+                <li>
+                  <div class="nav-user-info">
+                    <div class="notification-title"> Notificaciones</div>
+                  </div>
+                  <div class="notification-list">
+                    <div class="list-group"> <a href="#" class="list-group-item list-group-item-action active">
+                        <div class="notification-info">
+                          <div class="notification-list-user-img"><img
+                              src="https://img.icons8.com/office/100/000000/administrator-female.png" alt=""
+                              class="user-avatar-md rounded-circle"></div>
+                          <div class="notification-list-user-block"><span class="notification-list-user-name">Jeremy
+                              Hukonah</span>accepted your invitation to join the team. <div class="notification-date">2
+                              min ago</div>
+                          </div>
+                        </div>
+                      </a> <a href="#" class="list-group-item list-group-item-action">
+                        <div class="notification-info">
+                          <div class="notification-list-user-img"><img
+                              src="https://img.icons8.com/color/48/000000/administrator-female.png" alt=""
+                              class="user-avatar-md rounded-circle"></div>
+                          <div class="notification-list-user-block"><span class="notification-list-user-name">John
+                              Sammy</span>updated the email address <div class="notification-date">2 days ago</div>
+                          </div>
+                        </div>
+                      </a> <a href="#" class="list-group-item list-group-item-action">
+                        <div class="notification-info">
+                          <div class="notification-list-user-img"><img
+                              src="https://img.icons8.com/color/100/000000/name.png" alt=""
+                              class="user-avatar-md rounded-circle"></div>
+                          <div class="notification-list-user-block"><span class="notification-list-user-name">Kioh
+                              Samso</span> is watching your main repository <div class="notification-date">2 min ago
+                            </div>
+                          </div>
+                        </div>
+                      </a> </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="list-footer"> <a href="#">Ver todas las Notificaciones</a></div>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="btn-toolbar pull-right">
+            <div class="btn-toolbar pull-right">
+              <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                <button class="btn btn-default btn-sm">
+                  <mat-icon>add</mat-icon>
+                </button>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-right connection-dropdown">
+                <li class="connection-list">
+                  <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+                      <a href="https://github.com/berny13" class="connection-item"><img
+                          src="https://img.icons8.com/nolan/100/000000/github.png" alt="">
+                        <span>Github</span>
+                      </a>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+                      <a href="#" class="connection-item">
+                        <img src="https://img.icons8.com/color/100/000000/dribbble.png" alt="">
+                        <span>Dribbble</span>
+                      </a>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+                      <a href="#" class="connection-item">
+                        <img src="https://img.icons8.com/color/100/000000/dropbox.png" alt="">
+                        <span>Dropbox</span>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+                      <a href="#" class="connection-item">
+                        <img src="https://img.icons8.com/color/100/000000/bitbucket.png" alt="">
+                        <span>Bitbucket</span></a>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+                      <a href="#" class="connection-item">
+                        <img src="https://img.icons8.com/color/100/000000/remove-ads.png" alt="">
+                        <span>Facebook
+                          ads</span></a>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+                      <a href="#" class="connection-item">
+                        <img src="https://img.icons8.com/wired/64/000000/slack.png" alt="">
+                        <span>Slack</span>
+                      </a>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="conntection-footer"><a href="#">Más</a></div>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item dropdown nav-user"> <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <img src="https://img.icons8.com/material/72/user-male-circle--v1.png" alt=""
+                class="user-avatar-md rounded-circle">
+            </a>
+            <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
+              <div class="nav-user-info">
+                <h5 class="mb-0 text-white nav-user-name">Cuenta</h5>
+                <span class="status">
+                </span>
+              </div>
+              <a class="dropdown-item" href="#">
+                <i class="fas fa-user mr-2"></i>Acceder
+              </a>
+              <a class="dropdown-item" href="#">
+                <i class="fas fa-cog mr-2">
+                </i>Registrarse</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</mat-toolbar>
 <mat-drawer-container class="example-container">
-    <mat-drawer mode="side" opened>Drawer content</mat-drawer>
-    <mat-drawer-content>Main content</mat-drawer-content>
-  </mat-drawer-container>
+  <mat-drawer mode="side" opened>MENU PRINCIPAL
+    <div>
+      <button class="btn btn-success btn-lg btn-block">TABLEROS</button>
+      <button class="btn btn-success btn-lg btn-block">PLANTILLAS</button>
+      <button class="btn btn-success btn-lg btn-block">INICIO</button>
+    </div>
+
+  </mat-drawer>
+  <mat-drawer-content class="contenido">TABLEROS
+    <div>
+      <button class="btn btn-success btn-lg btn-block">inicio</button>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>
