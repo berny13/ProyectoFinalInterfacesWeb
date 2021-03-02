@@ -29,6 +29,7 @@ import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { RegisterComponent } from './register/register.component';
 
 
 
@@ -42,7 +43,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
   declarations: [
     AppComponent,
     HomeComponent,
-    PrincipalComponent
+    PrincipalComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "trellobernyddbb"
+  },
+  "targets": {
+    "trellobernyddbb": {
+      "hosting": {
+        "home": [
+          "trellobernyddbb"
+        ]
+      }
+    }
   }
 }

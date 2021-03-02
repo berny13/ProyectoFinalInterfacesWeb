@@ -1,0 +1,95 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<mat-toolbar>
+    <div class="dashboard-header">
+        <nav class="navbar navbar-expand-lg bg-blue fixed-top">
+            <div class="btn-toolbar">
+                <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <mat-icon>toc</mat-icon>
+                </a>
+                <div class="dropdown-menu dropdown-menu-left nav-user-dropdown"
+                    aria-labelledby="navbarDropdownMenuLink2">
+                    <div class="nav-user-info">
+                        <h5 class="mb-0 text-white nav-user-name">Configuración</h5>
+                        <span class="status">
+                        </span>
+                    </div>
+                    <a class="dropdown-item" href="#">
+                        <i class="fas fa-user mr-2"></i>Sobre mi
+                    </a>
+                    <a class="dropdown-item" href="#">
+                        <i class="fas fa-cog mr-2">
+                        </i>Derechos Reservados</a>
+                </div>
+                <button class="btn btn-default btn-sm mr-1" type="button" data-toggle="collapse"
+                    data-target=".dual-collapse2">
+                    <mat-icon>home</mat-icon>
+                </button>
+            </div>
+            <a class="align-items-center" class="text-light" href="#">TRELLO-BERNY</a>
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto navbar-right-top">
+                    <li class="nav-item dropdown nav-user"> <a class="nav-link nav-user-img" href="#"
+                            id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            <img src="https://img.icons8.com/material/72/user-male-circle--v1.png" alt=""
+                                class="user-avatar-md rounded-circle">
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right nav-user-dropdown"
+                            aria-labelledby="navbarDropdownMenuLink2">
+                            <div class="nav-user-info">
+                                <h5 class="mb-0 text-white nav-user-name">Cuenta</h5>
+                                <span class="status">
+                                </span>
+                            </div>
+                            <a class="dropdown-item" href="#">
+                                <i class="fas fa-user mr-2"></i>Acceder
+                            </a>
+                            <a class="dropdown-item" href="#">
+                                <i class="fas fa-cog mr-2">
+                                </i>Registrarse</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</mat-toolbar>
+<div class="row mt-5">
+    <div class="col-md-6 mx-auto mt-5">
+        <div class="card border-0 shadow">
+            <div class="card-body">
+                <h1 class="text-center">LOGIN</h1>
+                <form>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" formControlName="email" name="email" />
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" formControlName="password" name="password" />
+                    </div>
+                    <button class="btn btn-success btn-lg btn-block" type="submit">
+                        Login
+                    </button>
+                </form>
+                <div class="form-group mt-2">
+                    <button class="btn btn-lg btn-danger btn-block">Google</button>
+                </div>
+                <div class="form-group mt-2">
+                    <p class="text-center">
+                        Create an account ? <a> Register </a>
+                    </p>
+                </div>
+                <div class="form-group mt-3">
+                    <p class="text-center">
+                        <a> Forgot password? </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
