@@ -1,6 +1,7 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <mat-toolbar>
   <div class="dashboard-header">
     <nav class="navbar navbar-expand-lg bg-blue fixed-top">
@@ -161,18 +162,55 @@
     </nav>
   </div>
 </mat-toolbar>
-<mat-drawer-container class="example-container">
-  <mat-drawer mode="side" opened>MENU PRINCIPAL
-    <div>
-      <button class="btn btn-success btn-lg btn-block">TABLEROS</button>
-      <button class="btn btn-success btn-lg btn-block">PLANTILLAS</button>
-      <button class="btn btn-success btn-lg btn-block">INICIO</button>
+<mat-drawer-container class="example-container bg-transparent">
+  <mat-drawer mode="side" opened class="bg-transparent">
+    <h3>MENU PRINCIPAL</h3>
+    <div><br>
+      <button class="btn btn-success btn-block"> Tableros</button><br>
+      <br><button class="btn btn-success btn-block disabled"> Plantillas</button><br>
+      <br><button class="btn btn-success btn-block">Inicio</button>
     </div>
 
   </mat-drawer>
-  <mat-drawer-content class="contenido">TABLEROS
-    <div>
-      <button class="btn btn-success btn-lg btn-block">inicio</button>
+  <mat-drawer-content class="contenido bg-transparent">
+    <h3>TABLEROS</h3>
+    <div class="row row-cols-1 row-cols-md-2 g-4 m-1 bg-transparent">
+      <div class="col bg-transparent">
+        <button class="btn btn-light" routerLink="home" (click)="irhome()">
+          <div class="card">
+            <img
+              src="https://images.unsplash.com/photo-1443694910004-3567042689f5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=747&q=80"
+              class="card-img-top" alt="...">
+            <div class="card-body bg-transparent">
+              <h5 class="card-title">TABLERO 1</h5>
+            </div>
+          </div>
+        </button>
+      </div>
+      <div class="col">
+        <button class="btn btn-light">
+        <div class="card">
+          <img
+            src="https://images.unsplash.com/photo-1501619757722-90657a99803b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+            class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">TABLERO 2</h5>
+          </div>
+        </div>
+      </button>
+      </div>
+      <div class="col">
+        <button class="btn btn-light">
+        <div class="card">
+          <img
+            src="https://images.unsplash.com/photo-1468276311594-df7cb65d8df6?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+            class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">TABLERO 3</h5>
+          </div>
+        </div>
+      </button>
+      </div>
     </div>
   </mat-drawer-content>
 </mat-drawer-container>

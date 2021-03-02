@@ -28,6 +28,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { NoopAnimationsModule } from "@angular/platform-browser/animations";
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
 
@@ -70,7 +71,8 @@ import { NoopAnimationsModule } from "@angular/platform-browser/animations";
     MatRippleModule,
     MatInputModule,
     MatSidenavModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    MatProgressBarModule
 
   ],
   exports: [
