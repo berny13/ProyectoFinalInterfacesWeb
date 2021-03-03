@@ -30,6 +30,15 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { environment } from '../environments/environment';
+
+
+
+
+
 
 
 
@@ -44,7 +53,8 @@ import { RegisterComponent } from './register/register.component';
     AppComponent,
     HomeComponent,
     PrincipalComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -74,7 +84,10 @@ import { RegisterComponent } from './register/register.component';
     MatInputModule,
     MatSidenavModule,
     NoopAnimationsModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule
+    
 
   ],
   exports: [

@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebaseConfig : {
+    apiKey: "AIzaSyA9K5wTws1E3Hj_cwN6inp3XJ0HjbCFK1o",
+    authDomain: "trellobernyddbb.firebaseapp.com",
+    databaseURL: "https://trellobernyddbb-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "trellobernyddbb",
+    storageBucket: "trellobernyddbb.appspot.com",
+    messagingSenderId: "555284938095",
+    appId: "1:555284938095:web:06ba97c0e3a4235cc3bc9a",
+    measurementId: "G-BPNXB97G2B"
+  }
 };
 
 /*
