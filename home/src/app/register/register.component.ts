@@ -22,6 +22,7 @@ export class RegisterComponent implements OnInit {
   onRegister(){
     const {email, contraseña} = this.registerForm.value;
     this.authSvc.register(email, contraseña);
+    alert('se ha registrado el usuario')
     
   }
 

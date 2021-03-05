@@ -10,13 +10,15 @@ import { inProgress } from './models/inProgress.model';
 import { done } from './models/done.model';
 import { todo } from './models/todo.model';
 import { Router } from '@angular/router';
+import { Login } from '../service/login.service';
 
 
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  providers: [Login]
 })
 export class HomeComponent implements OnInit {
 
@@ -30,6 +32,8 @@ export class HomeComponent implements OnInit {
   public tarjetainProgress!:string;
   public tarjetadone!: string;
   public tarjetatodo!: string;
+  public isLogged = false;
+  public user$ : Observable<any> = this.authSvc.afAuth.user;
 
   @ViewChild('replyForm', { static: false })
   set replyForm(content: NgForm) {
@@ -107,7 +111,21 @@ export class HomeComponent implements OnInit {
   clear() {
     this.streets = [''];
   }
-  ngOnInit() {
+
+  onLogout(){
+    this.authSvc.logout();
+  }
+ async ngOnInit() {
+   
+
+    console.log('Navbar');
+    const user =  await this.authSvc.getCurrentUser()
+    if (user) {
+      this.isLogged = true;
+      console.log('user->', user);
+      
+    }
+    
     this.filteredStreets = this.control.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value))
@@ -143,7 +161,11 @@ limpiar1(): void{
 deletedone(tarjetadone:any){
   this.adddone.splice(this.adddone.indexOf(tarjetadone),1);
 }
-  constructor(breakpointObserver: BreakpointObserver, private router: Router) {
+  constructor(
+    breakpointObserver: BreakpointObserver, 
+    private router: Router,
+    private authSvc: Login
+    ) {
     breakpointObserver.observe([
       Breakpoints.HandsetLandscape,
       Breakpoints.HandsetPortrait
