@@ -3,7 +3,7 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <mat-toolbar>
-  <div class="dashboard-header">
+  <div class="dashboard-header" *ngIf="authSvc.user | async as user">
     <nav class="navbar navbar-expand-lg bg-blue fixed-top">
       <div class="btn-toolbar">
         <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown"

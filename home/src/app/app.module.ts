@@ -34,6 +34,7 @@ import { LoginComponent } from './login/login.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -86,7 +87,11 @@ import { environment } from '../environments/environment';
     NoopAnimationsModule,
     MatProgressBarModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    ToastrModule.forRoot({
+      timeOut: 2000,
+      positionClass: 'toast-top-center'
+    }),
     
 
   ],

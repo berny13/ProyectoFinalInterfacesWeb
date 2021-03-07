@@ -11,6 +11,9 @@ import { done } from './models/done.model';
 import { todo } from './models/todo.model';
 import { Router } from '@angular/router';
 import { Login } from '../service/login.service';
+import { User } from '@firebase/auth-types';
+import { ToastrService } from 'ngx-toastr';
+import { ActivatedRoute, Params } from '@angular/router';
 
 
 
@@ -34,6 +37,7 @@ export class HomeComponent implements OnInit {
   public tarjetatodo!: string;
   public isLogged = false;
   public user$ : Observable<any> = this.authSvc.afAuth.user;
+  public uid!:any
 
   @ViewChild('replyForm', { static: false })
   set replyForm(content: NgForm) {
@@ -66,29 +70,105 @@ export class HomeComponent implements OnInit {
  
 
 
-  addtodo: todo[] = [];
-  adddone: done[] = [];
-  addinprogress: inProgress[] = [];
+  addtodo: any[] = [];
+  adddone: any[] = [];
+  addinprogress: any[] = [];
 
-  tarjetatodoadd(){
-    let todos = new todo(this.tarjetatodo);
+  tarjetatodoadd(user: any){
+
+    
+    if (this.tarjetatodo) {
+      let todos = new todo(this.tarjetatodo);
     this.addtodo.push(todos);
+    console.log(this.uid);
+    
+    this.authSvc.añadirTarjeta(this.tarjetatodo, user, 'todo')
     this.limpiar();
+    } else {
+      this.tarjetatodo= '';
+      this.toastr.error('tarjeta vacia debe escribir tarjeta', 'Error')
+    }
+    
+    
     
   }
 
-  tarjetadoneadd(){
-    let donees = new done(this.tarjetadone);
+  tarjetadoneadd(user: any){
+
+    if (this.tarjetadone) {
+      let donees = new done(this.tarjetadone);
     this.adddone.push(donees);
+    console.log(this.uid);
+    
+    this.authSvc.añadirTarjeta(this.tarjetadone, user, 'done')
+    this.limpiar();
+    } else {
+      this.tarjetadone= '';
+      this.toastr.error('tarjeta vacia debe escribir tarjeta', 'Error')
+    }
+    
     this.limpiar2();
     
   }
 
-  tarjetainprogressadd(){
-    let inprogresso = new inProgress(this.tarjetainProgress);
-    this.addinprogress.push(inprogresso);
+  tarjetainprogressadd(user: any){
+
+    if (this.tarjetainProgress) {
+      let inprogresso = new inProgress(this.tarjetainProgress);
+      this.addinprogress.push(inprogresso);
+      console.log(this.uid);
+    
+    this.authSvc.añadirTarjeta(this.tarjetainProgress, user, 'progress')
+    this.limpiar();
+    } else {
+      this.tarjetainProgress= '';
+      this.toastr.error('tarjeta vacia debe escribir tarjeta', 'Error')
+    }
+   
     this.limpiar1();
     
+  }
+
+  getTarjetaToDo(user:any) {
+    this.authSvc.getTarjeta(user,'todo').subscribe(data =>{
+      this.addtodo = []
+      data.forEach((e: any) => {
+        const tarjet: any = e.payload.val();
+        //this.classs.keys = claseses.key;
+        this.addtodo.push(tarjet);
+        //console.log(c);
+        //console.log(this.uid)
+      })
+      //console.log('clase',this.classs)
+    })
+  }
+
+  getTarjetaInProgress(user:any) {
+    this.authSvc.getTarjeta(user, 'progress').subscribe(data =>{
+      this.addinprogress = []
+      data.forEach((e: any) => {
+        const tarjet: any = e.payload.val();
+        //this.classs.keys = claseses.key;
+        this.addinprogress.push(tarjet);
+        //console.log(c);
+        //console.log(this.uid)
+      })
+      //console.log('clase',this.classs)
+    })
+  }
+
+  getTarjetaDone(user:any) {
+    this.authSvc.getTarjeta(user, 'done').subscribe(data =>{
+      this.adddone = []
+      data.forEach((e: any) => {
+        const tarjet: any = e.payload.val();
+        //this.classs.keys = claseses.key;
+        this.adddone.push(tarjet);
+        //console.log(c);
+        //console.log(this.uid)
+      })
+      //console.log('clase',this.classs)
+    })
   }
 
   drop(event: CdkDragDrop<string[], any>) {
@@ -117,8 +197,8 @@ export class HomeComponent implements OnInit {
   }
  async ngOnInit() {
    
+  this.uid = this.rutaActiva.snapshot.params.uid;
 
-    console.log('Navbar');
     const user =  await this.authSvc.getCurrentUser()
     if (user) {
       this.isLogged = true;
@@ -131,6 +211,7 @@ export class HomeComponent implements OnInit {
       map(value => this._filter(value))
     );
 
+  
   }
 
   private _filter(value: string): string[] {
@@ -152,19 +233,25 @@ limpiar1(): void{
   this.tarjetadone= '';
  }
 
- deletetodo(tarjetatodo:any){
+ deletetodo(tarjetatodo:any,user:any,nombre:string){
    this.addtodo.splice(this.addtodo.indexOf(tarjetatodo),1);
+   this.authSvc.deleteTarjeta(user,'todo',nombre);
  }
- deleteinprogress(tarjetainprogress:any){
+ deleteinprogress(tarjetainprogress:any,user:any,nombre:string){
   this.addinprogress.splice(this.addinprogress.indexOf(tarjetainprogress),1);
+  this.authSvc.deleteTarjeta(user,'progress',nombre);
 }
-deletedone(tarjetadone:any){
+deletedone(tarjetadone:any,user:any,nombre:string){
   this.adddone.splice(this.adddone.indexOf(tarjetadone),1);
+  this.authSvc.deleteTarjeta(user,'done',nombre);
 }
   constructor(
     breakpointObserver: BreakpointObserver, 
     private router: Router,
-    private authSvc: Login
+    public authSvc: Login,
+    private toastr: ToastrService,
+    private rutaActiva: ActivatedRoute
+    
     ) {
     breakpointObserver.observe([
       Breakpoints.HandsetLandscape,

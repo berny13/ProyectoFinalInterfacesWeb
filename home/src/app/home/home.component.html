@@ -2,7 +2,7 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <mat-toolbar>
-  <div class="dashboard-header">
+  <div class="dashboard-header" *ngIf="authSvc.user | async as user">
     <nav class="navbar navbar-expand-lg bg-blue fixed-top">
       <div class="btn-toolbar">
         <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown"
@@ -24,7 +24,7 @@
         </div>
         <button (click)="irprincipal()" routerLink="/" class="btn btn-default btn-sm mr-1" type="button"
           data-toggle="collapse" data-target=".dual-collapse2">
-          <mat-icon>home</mat-icon>
+          <mat-icon >home</mat-icon>
         </button>
       </div>
       <a class="align-items-center" class="text-light" href="#">TRELLO-BERNY</a>
@@ -142,7 +142,7 @@
                 </li>
                 <li>
                   <div class="conntection-footer"><a href="#">Más</a></div>
-                </li>
+ d               </li>
               </ul>
             </div>
           </li>
@@ -186,7 +186,7 @@
                 <section class="ui">
                   <div class="lists">
                     <div class="list ">
-                      <div class="example-container" widht="18rem">
+                      <div class="example-container" widht="18rem" *ngIf="authSvc.user | async as user">
                         <div class="row">
                           <header class="col">To Do</header>
                           <button class="btn btn-link" mat-raised-button>
@@ -194,16 +194,16 @@
                           </button>
                         </div>
                         <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="addtodo"
-                          [cdkDropListConnectedTo]="[inProgressList]" class="example-list">
-                          <div class="example-box" *ngFor="let item of addtodo" cdkDrag>{{item.tarjetatodo}}
+                           class="example-list">
+                          <div class="example-box" *ngFor="let item of addtodo" cdkDrag>{{item.nombre}}
                             <button matTooltip="Delete todos" matTooltipPosition="above" mat-icon-button
-                              (click)="deletetodo(tarjetatodo)">
+                              (click)="deletetodo(tarjetatodo,user,item.nombre)">
                               <mat-icon aria-label="Example icon-button with a heart icon">delete</mat-icon>
                             </button>
                           </div>
                         </div>
                         <footer>
-                          <div>
+                          <div *ngIf="authSvc.user | async as user">
                             <mat-accordion>
                               <mat-expansion-panel>
                                 <mat-expansion-panel-header>
@@ -238,15 +238,16 @@
                                 </div>
                                 <br>
                                 <button class="" class="btn btn-success btn-block my-auto py-revert"
-                                  (click)="tarjetatodoadd()">Añadir</button>
+                                  (click)="tarjetatodoadd(user)">Añadir</button>
                               </mat-expansion-panel>
                             </mat-accordion>
+                            <p (click)="getTarjetaToDo(user)">Update</p>
                           </div>
                         </footer>
                       </div>
                     </div>
                     <!--otra tarjeta-->
-                    <div class="list pt-1">
+                    <div class="list pt-1" *ngIf="authSvc.user | async as user">
                       <div class="example-container">
                         <div class="row">
                           <header class="col">In Progress</header>
@@ -256,18 +257,19 @@
                         </div>
                         <mat-divider></mat-divider>
                         <div cdkDropList #inProgressList="cdkDropList" [cdkDropListData]="addinprogress"
-                          [cdkDropListConnectedTo]="[doneList]" class="example-list">
-                          <div class="example-box" *ngFor="let item of addinprogress" cdkDrag>{{item.tarjetainProgress}}
+                           class="example-list">
+                          <div class="example-box" *ngFor="let item of addinprogress" cdkDrag>
+                            {{item.nombre}}
                             <button matTooltip="Delete inprogress" matTooltipPosition="above" mat-icon-button
-                              (click)="deleteinprogress(tarjetainProgress)">
+                              (click)="deleteinprogress(tarjetainProgress,user,item.nombre)">
                               <mat-icon aria-label="Example icon-button with a heart icon">delete</mat-icon>
                             </button>
                           </div>
                         </div>
                         <footer>
-                          <div>
+                          <div *ngIf="authSvc.user | async as user">
                             <mat-accordion>
-                              <mat-expansion-panel>
+                              <mat-expansion-panel >
                                 <mat-expansion-panel-header>
                                   <mat-panel-title>
                                     <button class="btn btn-light btn-sm btn-block">Add new card...</button>
@@ -300,15 +302,16 @@
                                 </div>
                                 <br>
                                 <button class="btn btn-success btn-block my-auto py-revert"
-                                  (click)="tarjetainprogressadd()">Añadir</button>
+                                  (click)="tarjetainprogressadd(user)">Añadir</button>
                               </mat-expansion-panel>
                             </mat-accordion>
+                            <p (click)="getTarjetaInProgress(user)">Update</p>
                           </div>
                         </footer>
                       </div>
                     </div>
                     <!--otracard-->
-                    <div class="list pt-1">
+                    <div class="list pt-1" *ngIf="authSvc.user | async as user">
                       <div class="example-container">
                         <div class="row">
                           <header class="col">Done</header>
@@ -317,18 +320,18 @@
                           </button>
                         </div>
                         <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="adddone"
-                          [cdkDropListConnectedTo]="[inProgressList]" class="example-list">
-                          <div class="example-box" *ngFor="let item of adddone">{{item.tarjetadone}}
+                           class="example-list">
+                          <div class="example-box" *ngFor="let item of adddone">{{item.nombre}}
                             <button matTooltip="Delete done" matTooltipPosition="above" mat-icon-button
-                              (click)="deletedone(tarjetadone)">
+                              (click)="deletedone(tarjetadone, user,item.nombre)">
                               <mat-icon aria-label="Example icon-button with a heart icon">delete</mat-icon>
                             </button>
                           </div>
                         </div>
                         <footer>
-                          <div>
+                          <div *ngIf="authSvc.user | async as user">
                             <mat-accordion>
-                              <mat-expansion-panel>
+                              <mat-expansion-panel >
 
                                 <mat-expansion-panel-header>
                                   <mat-panel-title>
@@ -362,9 +365,10 @@
                                 </div>
                                 <br>
                                 <button class="" class="btn btn-success btn-block my-auto py-revert"
-                                  (click)="tarjetadoneadd()">Añadir</button>
+                                  (click)="tarjetadoneadd(user)">Añadir</button>
                               </mat-expansion-panel>
                             </mat-accordion>
+                            <p (click)="getTarjetaDone(user)">Update</p>
                           </div>
                         </footer>
                       </div>
